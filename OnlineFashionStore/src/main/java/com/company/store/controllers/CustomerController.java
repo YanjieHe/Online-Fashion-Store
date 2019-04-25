@@ -12,7 +12,7 @@ public class CustomerController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> getAllCustomers() {
-        return new ResponseEntity<>("This is a test", HttpStatus.OK);
+        return new ResponseEntity<>("This is a test.", HttpStatus.OK);
     }
 
 }
