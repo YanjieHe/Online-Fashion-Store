@@ -12,3 +12,11 @@
 - Product
 - Shopping Cart
 - Order
+
+Product:
+- ID
+- name
+- price
+- image link
+- post date
+- description
