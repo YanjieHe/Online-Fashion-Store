@@ -20,6 +20,8 @@ Product:
 - price
 - image link
 - post date
+- color
+- score
 - description
 
 Product Categories:
