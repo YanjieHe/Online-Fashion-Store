@@ -14,9 +14,15 @@
 - Order
 
 Product:
-- ID
+- product ID
+- category ID
 - name
 - price
 - image link
 - post date
 - description
+
+Product Categories:
+- category ID
+- category name
+
