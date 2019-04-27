@@ -76,7 +76,7 @@
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "Product doesn't exist" }`
+    **Content:** `{ error : "Category doesn't exist" }`
 
   OR
 
