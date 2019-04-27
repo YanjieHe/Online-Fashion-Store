@@ -30,7 +30,7 @@
 	price : 448,
 	image_link : "https://katespade.insnw.net/KateSpade/PXRUA361_892?$large$",
 	post_date : "2019-04-02",
-	color : "Black Multi",
+	color : ["Black Multi", "Juicy Organge Multi"],
 	score : 0,
 	description : "the nicola mod dot medium shoulder bag is a retro-inspired twist on our bag of the same name. crafted from smooth tri-color leather and gently structured for everyday use, this style's flap is adorned with playful cutout dots--each designed with one half open and the other half polished gold-tone metal for a little bit of shine."
 }`
