@@ -25,4 +25,4 @@ Product:
 Product Categories:
 - category ID
 - category name
-
+- parent category id (nullable)
