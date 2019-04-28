@@ -1,5 +1,6 @@
 package com.company.store.controllers;
 
+import com.company.store.models.ProductCategory;
 import com.company.store.services.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ public class ProductCategoryController {
     @RequestMapping(value = "/product_categories/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> fetchProductById(@PathVariable(name = "id") int productCategoryId) {
-        Object product = productCategoryService.fetchProductCategoryById(productCategoryId);
+        ProductCategory product = productCategoryService.fetchProductCategoryById(productCategoryId);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 }

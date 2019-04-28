@@ -1,10 +1,16 @@
 package com.company.store.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"Category_Name"}
+                )
+        }
+)
 public class ProductCategory {
     @Id
     @Column(name = "Category_ID")
@@ -16,7 +22,7 @@ public class ProductCategory {
     @Column(name = "Parent_Category Id")
     private Integer parentCategoryId;
 
-    public ProductCategory (){
+    public ProductCategory() {
 
     }
 

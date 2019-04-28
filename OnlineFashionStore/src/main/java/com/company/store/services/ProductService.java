@@ -13,4 +13,8 @@ public class ProductService {
     public Product fetchProductById(int productId) {
         return productDao.read(productId);
     }
+
+    public void createProduct(Product product){
+        productDao.createProduct(product);
+    }
 }

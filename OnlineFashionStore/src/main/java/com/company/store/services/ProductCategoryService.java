@@ -1,11 +1,12 @@
 package com.company.store.services;
 
+import com.company.store.models.ProductCategory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductCategoryService {
 
-    public Object fetchProductCategoryById(int productId) {
+    public ProductCategory fetchProductCategoryById(int productId) {
         return null;
     }
 }
