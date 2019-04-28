@@ -52,7 +52,7 @@
 
 * **URL**
 
-  /categories/:id
+  /product_categories/:id
 
 * **Method:**
 
@@ -71,7 +71,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{	category_id : 5, category_name : "NICOLA" }`
+    **Content:** `{	category_id : 5, category_name : "NICOLA", parent_category_id : "handbag" }`
  
 * **Error Response:**
 
