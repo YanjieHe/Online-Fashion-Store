@@ -15,8 +15,8 @@ public class ProductCategoryController {
 
     @RequestMapping(value = "/product_categories/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<Object> fetchProductById(@PathVariable(name = "id") int productCategoryId) {
-        ProductCategory product = productCategoryService.fetchProductCategoryById(productCategoryId);
-        return new ResponseEntity<>(product, HttpStatus.OK);
+    public ResponseEntity<Object> fetchProductCategoryById(@PathVariable(name = "id") int productCategoryId) {
+        ProductCategory productCategory = productCategoryService.fetchProductCategoryById(productCategoryId);
+        return new ResponseEntity<>(productCategory, HttpStatus.OK);
     }
 }

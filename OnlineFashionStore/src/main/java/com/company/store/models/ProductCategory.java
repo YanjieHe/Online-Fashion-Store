@@ -19,7 +19,7 @@ public class ProductCategory {
     @Column(name = "Category_Name")
     private String categoryName;
 
-    @Column(name = "Parent_Category Id")
+    @Column(name = "Parent_Category_Id", nullable = true)
     private Integer parentCategoryId;
 
     public ProductCategory() {

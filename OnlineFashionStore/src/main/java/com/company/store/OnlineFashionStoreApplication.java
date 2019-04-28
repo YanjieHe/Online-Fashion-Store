@@ -2,6 +2,7 @@ package com.company.store;
 
 import com.company.store.models.Product;
 import com.company.store.models.ProductCategory;
+import com.company.store.services.ProductCategoryService;
 import com.company.store.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +22,9 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    ProductCategoryService productCategoryService;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -50,6 +54,8 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
             ProductCategory productCategory = new ProductCategory();
             productCategory.setCategoryId(i);
             productCategory.setCategoryName("Bag " + i);
+            productCategory.setParentCategoryId(null);
+            productCategoryService.createProductCategory(productCategory);
         }
     }
 }
