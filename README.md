@@ -30,6 +30,14 @@ Product Categories:
 - category name
 - parent category id (nullable)
 
+Order:
+- order ID
+- customer ID
+- product ID
+- order date
+- order status
+- quantity
+- price
 
 ## RESTful API
 [API.md](./Documents/API.md)
