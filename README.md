@@ -21,6 +21,7 @@ Product:
 - image link
 - post date
 - color
+- size
 - score
 - description
 
