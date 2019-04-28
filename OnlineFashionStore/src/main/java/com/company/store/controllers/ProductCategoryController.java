@@ -12,7 +12,7 @@ public class ProductCategoryController {
     @Autowired
     ProductCategoryService productCategoryService;
 
-    @RequestMapping(value = "/product_category/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/product_categories/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> fetchProductById(@PathVariable(name = "id") int productCategoryId) {
         Object product = productCategoryService.fetchProductCategoryById(productCategoryId);
