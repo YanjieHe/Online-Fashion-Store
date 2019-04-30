@@ -65,15 +65,15 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         color.add("white");
         color.add("black");
 
-        for(int i =1; i < 4; i++){
+        for (int i = 1; i < 4; i++) {
             Product product = new Product();
             product.setProductId(i);
             product.setCategoryId(1);
-            product.setName(name.get(i-1));
+            product.setName(name.get(i - 1));
             product.setPrice(358.0);
-            product.setImageLink(link.get(i-1))
+            product.setImageLink(link.get(i - 1));
             product.setPostDate(new GregorianCalendar(2019, Calendar.APRIL, 29).getTime());
-            product.setColor(color.get(i-1));
+            product.setColor(color.get(i - 1));
             product.setScore(4.0);
             product.setDescription("satchel with zipper closure");
             productService.createProduct(product);
