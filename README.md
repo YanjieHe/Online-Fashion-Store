@@ -30,6 +30,14 @@ Product Categories:
 - category name
 - parent category id (nullable)
 
+Customer:
+- customer ID
+- email
+- password
+- first name
+- last name
+
+
 Order:
 - order ID
 - customer ID
