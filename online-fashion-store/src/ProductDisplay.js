@@ -5,14 +5,17 @@ class ProductDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: {}
-        }
+            products: []
+        };
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/products/1")
+        fetch("http://localhost:8080/trending_products/10")
             .then(response => response.json())
-            .then(json => this.setState({product: json}));
+            .then(json => {
+                console.log(json);
+                this.setState({products: json})
+            });
     }
 
     renderOneProduct(title, price, imageUrl) {
@@ -29,7 +32,10 @@ class ProductDisplay extends React.Component {
     render() {
         return <div>
             <Container>
-                {this.renderOneProduct(this.state.product.product_name,this.state.product.price, this.state.product.image_link)}
+                {this.state.products.map(
+                    product =>
+                        this.renderOneProduct(product.name, product.price, product.imageLink)
+                )}
             </Container>
         </div>
     }

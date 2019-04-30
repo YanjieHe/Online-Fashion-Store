@@ -1,10 +1,13 @@
 package com.company.store.dao;
 
 import com.company.store.models.Product;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
 
 @Repository
 public class ProductDao {
@@ -52,5 +55,16 @@ public class ProductDao {
 
         session.getTransaction().commit();
         session.close();
+    }
+    public ArrayList<Product> fetchTrendingProducts(int amount) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "FROM Product";
+        Query query = session.createQuery(hql);
+        query.setMaxResults(amount);
+        ArrayList<Product> products = (ArrayList<Product>) query.list();
+        session.getTransaction().commit();
+        session.close();
+        return products;
     }
 }
