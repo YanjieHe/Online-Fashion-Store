@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -25,6 +26,9 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
 
     @Autowired
     ProductCategoryService productCategoryService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @Override
     public void run(String... strings) throws Exception {
