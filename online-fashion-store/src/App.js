@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Col, Container, Nav, Row} from 'react-bootstrap';
+import {Navbar, Nav} from 'react-bootstrap';
 
 class App extends React.Component {
     constructor(props) {
@@ -19,63 +19,14 @@ class App extends React.Component {
 
         return (
             <div>
-                <Nav
-                    activeKey="/home"
-                    onSelect={selectedKey => alert(`selected ${selectedKey}`)}
-                >
-                    <Nav.Item>
-                        <Nav.Link href="/home">NEWS</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-1">HANDBAGS</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-2">CLOTHING</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-                <Container>
-                    <Row>
-                    <Col width={"30%"}>
-                        <ul>
-                            <li>VIEW ALL</li>
-                            <li>DRESSES & JUMPSUITS</li>
-                        </ul>
-                    </Col>
-                    <Col>
-                        <Row>
-                            <Col>
-                                <Card style={{width: '6rem'}}>
-                                    <Card.Img variant="top"
-                                              src="https://katespade.insnw.net/KateSpade/NJMUA521_092_1?$large$"/>
-                                    <Card.Body>
-                                        <Card.Title>femme denim jacket</Card.Title>
-                                        <Card.Text>$248.00</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card style={{width: '6rem'}}>
-                                    <Card.Img variant="top"
-                                              src="https://katespade.insnw.net/KateSpade/NJMUA521_092_1?$large$"/>
-                                    <Card.Body>
-                                        <Card.Title>femme denim jacket</Card.Title>
-                                        <Card.Text>$248.00</Card.Text>
-                                    </Card.Body>
-                                </Card></Col>
-                            <Col>
-                                <Card style={{width: '6rem'}}>
-                                    <Card.Img variant="top"
-                                              src="https://katespade.insnw.net/KateSpade/NJMUA521_092_1?$large$"/>
-                                    <Card.Body>
-                                        <Card.Title>femme denim jacket</Card.Title>
-                                        <Card.Text>$248.00</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
-                    </Col>
-                    </Row>
-                </Container>
+                <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#home">Home</Nav.Link>
+                        <Nav.Link href="#features">Features</Nav.Link>
+                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    </Nav>
+                </Navbar>
             </div>
         );
     }
