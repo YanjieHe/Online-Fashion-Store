@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar, Nav} from 'react-bootstrap';
+import ProductDisplay from "./ProductDisplay";
 
 class App extends React.Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class App extends React.Component {
 
         return (
             <div>
-
+                <ProductDisplay/>
             </div>
         );
     }
