@@ -23,19 +23,32 @@ class ProductDisplay extends React.Component {
             <Card.Img variant="top" src={imageUrl}/>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Text>{price}</Card.Text>
+                <Card.Text>${price}</Card.Text>
                 {/*<Button variant="primary">Go somewhere</Button>*/}
             </Card.Body>
         </Card>;
     }
 
     render() {
+        let rows = [];
+        let N = this.state.products.length;
+        for (let i = 0; i < N; i = i + 3) {
+            let row = [];
+            for (let k = 0; k < 3 && i + k < N; k++) {
+                let product = this.state.products[i + k];
+                row.push(<Col>
+                    {this.renderOneProduct(product.name, product.price, product.imageLink)}
+                </Col>);
+            }
+            rows.push(
+                <Row>
+                    {row}
+                </Row>
+            );
+        }
         return <div>
             <Container>
-                {this.state.products.map(
-                    product =>
-                        this.renderOneProduct(product.name, product.price, product.imageLink)
-                )}
+                {rows}
             </Container>
         </div>
     }

@@ -38,42 +38,29 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
     }
 
     void InsertProducts() {
-//        for (int i = 1; i <= 10; i++) {
-//            Product product = new Product();
-//            product.setProductId(i);
-//            product.setCategoryId(10);
-//            product.setName("Bag");
-//            product.setPrice(890.0);
-//            product.setImageLink("https://katespade.insnw.net/KateSpade/PXRUA160_399_1?$large$");
-//            product.setPostDate(new GregorianCalendar(2019, Calendar.APRIL, 1).getTime());
-//            product.setColor("red");
-//            product.setScore(4.0);
-//            product.setDescription("satchel with zipper closure");
-//
-//            productService.createProduct(product);
-//        }
         ArrayList<String> name = new ArrayList<String>();
         name.add("Large Blue Bag");
         name.add("Large White Bag");
         name.add("Large Black Bag");
         ArrayList<String> link = new ArrayList<String>();
-        link.add("https://www.katespade.com/products/margaux-large-satchel/PXRUA160.html?dwvar_PXRUA160_color=399");
-        link.add("https://www.katespade.com/products/margaux-jeweled-large-satchel/098687377393.html");
-        link.add("https://www.katespade.com/products/margaux-jeweled-large-satchel/PXRUA350.html?dwvar_PXRUA350_size=U&dwvar_PXRUA350_color=429");
+        link.add("https://katespade.insnw.net/KateSpade/PXRUA160_399?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/PXRUA350_104?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/PXRUA350_429?$large$");
         ArrayList<String> color = new ArrayList<String>();
         color.add("blue");
         color.add("white");
         color.add("black");
 
-        for (int i = 1; i < 4; i++) {
+        for (int i = 0; i < 12; i++) {
+            int k = i % 3;
             Product product = new Product();
-            product.setProductId(i);
+            product.setProductId(i + 1);
             product.setCategoryId(1);
-            product.setName(name.get(i - 1));
+            product.setName(name.get(k));
             product.setPrice(358.0);
-            product.setImageLink(link.get(i - 1));
+            product.setImageLink(link.get(k));
             product.setPostDate(new GregorianCalendar(2019, Calendar.APRIL, 29).getTime());
-            product.setColor(color.get(i - 1));
+            product.setColor(color.get(k));
             product.setScore(4.0);
             product.setDescription("satchel with zipper closure");
             productService.createProduct(product);

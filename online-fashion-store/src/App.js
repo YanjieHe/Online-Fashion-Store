@@ -21,6 +21,7 @@ class App extends React.Component {
         return (
             <div>
                 <NavigationBar/>
+                <br/>
                 <ProductDisplay/>
             </div>
         );
