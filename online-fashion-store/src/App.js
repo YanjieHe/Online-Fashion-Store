@@ -1,5 +1,6 @@
 import React from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
+import NavigationBar from "./NavigationBar";
 
 class App extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class App extends React.Component {
 
         return (
             <div>
-
+<NavigationBar/>
             </div>
         );
     }
