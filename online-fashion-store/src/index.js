@@ -8,12 +8,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Login from './Login';
+import ProductDetails from "./ProductDetails";
 
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={App}/>
             <Route exact path="/login" component={Login}/>
+            <Route exact path="/product/:productId" component={ProductDetails}/>
         </Switch>
     </BrowserRouter>, document.getElementById('root'));
 
