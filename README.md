@@ -17,11 +17,7 @@ Product:
 - product ID
 - category ID
 - name
-- price
-- image link
 - post date
-- color
-- size
 - score
 - description
 
@@ -37,15 +33,30 @@ Customer:
 - first name
 - last name
 
-
 Order:
 - order ID
 - customer ID
-- product ID
+- inventory id
 - order date
 - order status
 - quantity
 - price
+
+Inventory:
+- inventory id
+- product id
+- color
+- size
+- price
+- image link
+- quantity
+
+Shopping cart:
+- inventory id
+- customer id
+- adding date
+- quantity
+
 
 ## RESTful API
 [API.md](./Documents/API.md)
