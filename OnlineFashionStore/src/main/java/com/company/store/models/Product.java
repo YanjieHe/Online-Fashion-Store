@@ -17,17 +17,8 @@ public class Product {
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "Price")
-    private Double price;
-
-    @Column(name = "Image_Link")
-    private String imageLink;
-
     @Column(name = "Post_Date")
     private Date postDate;
-
-    @Column(name = "Color")
-    private String color;
 
     @Column(name = "Score")
     private Double score;
@@ -63,36 +54,12 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getImageLink() {
-        return imageLink;
-    }
-
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
-    }
-
     public Date getPostDate() {
         return postDate;
     }
 
     public void setPostDate(Date postDate) {
         this.postDate = postDate;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public Double getScore() {

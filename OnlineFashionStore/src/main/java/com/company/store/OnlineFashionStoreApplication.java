@@ -57,10 +57,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
             product.setProductId(i + 1);
             product.setCategoryId(1);
             product.setName(name.get(k));
-            product.setPrice(358.0);
-            product.setImageLink(link.get(k));
             product.setPostDate(new GregorianCalendar(2019, Calendar.APRIL, 29).getTime());
-            product.setColor(color.get(k));
             product.setScore(4.0);
             product.setDescription("satchel with zipper closure");
             productService.createProduct(product);
