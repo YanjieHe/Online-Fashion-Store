@@ -15,7 +15,7 @@ class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        alert(this.state.email + " " + this.state.password);
+        alert("email: " + this.state.email + "\npassword: " + this.state.password);
     }
 
     handleChange(event) {
