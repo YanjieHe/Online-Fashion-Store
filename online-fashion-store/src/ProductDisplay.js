@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
+import {withRouter} from 'react-router-dom';
 
 class ProductDisplay extends React.Component {
     constructor(props) {
@@ -18,9 +19,9 @@ class ProductDisplay extends React.Component {
             });
     }
 
-    renderOneProduct(title, price, imageUrl) {
+    renderOneProduct(productId, title, price, imageUrl) {
         return <Card style={{width: '15rem'}}>
-            <Card.Img variant="top" src={imageUrl}/>
+            <Card.Img variant="top" src={imageUrl} onClick={() => this.props.history.push("/product/" + productId)}/>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>${price}</Card.Text>
@@ -37,7 +38,7 @@ class ProductDisplay extends React.Component {
             for (let k = 0; k < 3 && i + k < N; k++) {
                 let product = this.state.products[i + k];
                 row.push(<Col>
-                    {this.renderOneProduct(product.name, product.price, product.imageLink)}
+                    {this.renderOneProduct(product.productId, product.name, product.price, product.imageLink)}
                 </Col>);
             }
             rows.push(
@@ -54,4 +55,4 @@ class ProductDisplay extends React.Component {
     }
 }
 
-export default ProductDisplay;
+export default withRouter(ProductDisplay);
