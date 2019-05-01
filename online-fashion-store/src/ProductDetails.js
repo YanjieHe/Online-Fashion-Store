@@ -21,21 +21,6 @@ class ProductDetails extends React.Component {
             });
     }
 
-    renderOneProduct(title, price, imageUrl, description) {
-        return <Card style={{width: '18rem'}}>
-            <Card.Img variant="top" src={imageUrl}/>
-            <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>${price}</Card.Text>
-                <Card.Text>{description}</Card.Text>
-                <ButtonToolbar>
-                    <Button variant="primary" size="lg" block>Add to cart</Button>
-                    <Button variant="primary" size="lg" block>Buy it!</Button>
-                </ButtonToolbar>
-            </Card.Body>
-        </Card>
-    }
-
     render() {
         let imageLink = this.state.product.imageLink;
         let price = this.state.product.price;
@@ -60,9 +45,6 @@ class ProductDetails extends React.Component {
                         </ButtonToolbar>
                     </Col>
                 </Row>
-                {/*{this.renderOneProduct(this.state.product.name, this.state.product.price,*/}
-                {/*this.state.product.imageLink,*/}
-                {/*this.state.product.description)}*/}
             </Container>
         </div>
     }
