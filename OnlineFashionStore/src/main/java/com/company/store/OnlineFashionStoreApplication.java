@@ -1,14 +1,17 @@
 package com.company.store;
 
+import com.company.store.models.Customer;
+import com.company.store.models.Inventory;
 import com.company.store.models.Product;
 import com.company.store.models.ProductCategory;
+import com.company.store.services.CustomerService;
+import com.company.store.services.InventoryService;
 import com.company.store.services.ProductCategoryService;
 import com.company.store.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,12 +32,16 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
     ProductCategoryService productCategoryService;
 
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+    InventoryService inventoryService;
+
+    @Autowired
+    CustomerService customerService;
 
     @Override
     public void run(String... strings) throws Exception {
         InsertProducts();
         InsertProductCategories();
+        InsertUsers();
     }
 
     void InsertProducts() {
@@ -61,6 +68,16 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
             product.setScore(4.0);
             product.setDescription("satchel with zipper closure");
             productService.createProduct(product);
+
+            Inventory inventory = new Inventory();
+            inventory.setColor(color.get(k));
+            inventory.setImageLink(link.get(k));
+            inventory.setPrice(100.0);
+            inventory.setInventoryId(i + 1);
+            inventory.setProductId(i + 1);
+            inventory.setQuantity(10);
+            inventory.setSize("20");
+            inventoryService.createInventory(inventory);
         }
     }
 
@@ -72,5 +89,24 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
             productCategory.setParentCategoryId(null);
             productCategoryService.createProductCategory(productCategory);
         }
+    }
+
+    void InsertUsers() {
+        Customer foo = new Customer();
+        foo.setCustomerId(1);
+        foo.setEmail("foo@gmail.com");
+        foo.setPassword("1234");
+        foo.setFirstName("Foo");
+        foo.setLastName("A");
+        customerService.createCustomer(foo);
+
+
+        Customer bar = new Customer();
+        bar.setCustomerId(2);
+        bar.setEmail("bar@gmail.com");
+        foo.setPassword("4321");
+        bar.setFirstName("Bar");
+        bar.setLastName("B");
+        customerService.createCustomer(bar);
     }
 }

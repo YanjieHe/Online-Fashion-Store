@@ -8,7 +8,9 @@ class ProductDetails extends React.Component {
         super(props);
         this.productId = this.props.match.params.productId;
         this.state = {
-            product: {}
+            product: {
+                inventories:[""]
+            }
         }
     }
 
@@ -22,8 +24,8 @@ class ProductDetails extends React.Component {
     }
 
     render() {
-        let imageLink = this.state.product.imageLink;
-        let price = this.state.product.price;
+        let imageLink = this.state.product.inventories[0].imageLink;
+        let price = this.state.product.inventories[0].price;
         let name = this.state.product.name;
         let description = this.state.product.description;
         return <div>

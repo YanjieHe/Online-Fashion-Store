@@ -1,8 +1,7 @@
 package com.company.store.dao;
 
-import com.company.store.models.Order;
 import com.company.store.models.ShoppingCart;
-import com.company.store.models.ShoppingCart;
+import com.company.store.models.ShoppingCartCompositeKey;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,32 +24,32 @@ public class ShoppingCartDao {
         }
     }
 
-    public ShoppingCart read(int orderId) {
+    public ShoppingCart read(ShoppingCartCompositeKey shoppingCartCompositeKey) {
         Session session = sessionFactory.openSession();
 
-        Order order = session.get(Order.class, orderId);
+        ShoppingCart shoppingCart = session.get(ShoppingCart.class, shoppingCartCompositeKey);
         session.close();
-        return order;
+        return shoppingCart;
     }
 
-    public void update(Order order) {
+    public void update(ShoppingCart shoppingCart) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.update(order);
+        session.update(shoppingCart);
 
         session.getTransaction().commit();
         session.close();
     }
 
-    public void delete(int orderId) {
+    public void delete(ShoppingCartCompositeKey shoppingCartCompositeKey) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Order order = session.load(Order.class, orderId);
-        session.delete(order);
+        ShoppingCart shoppingCart = session.load(ShoppingCart.class, shoppingCartCompositeKey);
+        session.delete(shoppingCart);
 
         session.getTransaction().commit();
         session.close();

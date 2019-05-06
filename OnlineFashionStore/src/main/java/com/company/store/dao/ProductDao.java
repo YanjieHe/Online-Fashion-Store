@@ -1,5 +1,6 @@
 package com.company.store.dao;
 
+import com.company.store.models.Inventory;
 import com.company.store.models.Product;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -13,6 +14,9 @@ import java.util.ArrayList;
 public class ProductDao {
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private InventoryDao inventoryDao;
 
     public void createProduct(Product product) {
         try {
@@ -56,6 +60,7 @@ public class ProductDao {
         session.getTransaction().commit();
         session.close();
     }
+
     public ArrayList<Product> fetchTrendingProducts(int amount) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -66,5 +71,16 @@ public class ProductDao {
         session.getTransaction().commit();
         session.close();
         return products;
+    }
+
+    public ArrayList<Inventory> fetchInventories(int productId) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "FROM Inventory WHERE productId = '" + productId + "'";
+        Query query = session.createQuery(hql);
+        ArrayList<Inventory> inventories =(ArrayList<Inventory>) query.list();
+        session.getTransaction().commit();
+        session.close();
+        return inventories;
     }
 }

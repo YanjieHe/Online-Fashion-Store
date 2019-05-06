@@ -11,7 +11,7 @@ class ProductDisplay extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/trending_products/10")
+        fetch("http://localhost:8080/trending_products/12")
             .then(response => response.json())
             .then(json => {
                 console.log(json);
@@ -38,7 +38,7 @@ class ProductDisplay extends React.Component {
             for (let k = 0; k < 3 && i + k < N; k++) {
                 let product = this.state.products[i + k];
                 row.push(<Col>
-                    {this.renderOneProduct(product.productId, product.name, product.price, product.imageLink)}
+                    {this.renderOneProduct(product.productId, product.productName, product.inventories[0].price, product.inventories[0].imageLink)}
                 </Col>);
             }
             rows.push(
