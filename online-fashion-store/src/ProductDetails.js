@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationBar from "./NavigationBar";
-import {Button, ButtonToolbar, Card, Col, Container, Row} from "react-bootstrap";
+import {Button, ButtonToolbar, Col, Container, Row} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 
 class ProductDetails extends React.Component {

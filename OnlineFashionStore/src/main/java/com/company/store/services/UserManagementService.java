@@ -36,4 +36,14 @@ public class UserManagementService {
         }
         return key;
     }
+
+    public int getCustomerId(long sessionId) throws Exception {
+        String key = Long.toString(sessionId);
+        String customerId = stringRedisTemplate.opsForValue().get(Long.toString(sessionId));
+        if (customerId == null) {
+            throw new Exception("cannot find customer id");
+        }
+        return Integer.parseInt(customerId);
+    }
+
 }

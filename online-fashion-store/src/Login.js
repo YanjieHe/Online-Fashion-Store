@@ -1,8 +1,14 @@
 import React from 'react';
 import {Button, Container, Form} from "react-bootstrap";
 import NavigationBar from './NavigationBar';
+import {instanceOf} from 'prop-types';
+import {withCookies, Cookies} from 'react-cookie';
+import {withRouter} from 'react-router-dom';
 
 class Login extends React.Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
 
     constructor(props) {
         super(props);
@@ -15,8 +21,35 @@ class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        alert("email: " + this.state.email + "\npassword: " + this.state.password);
+        fetch('http://localhost:8080/login/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password
+            })
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.text();
+                }
+            })
+            .then(text => {
+                if (text) {
+                    const {cookies} = this.props;
+                    cookies.set("SessionID", text, {path: '/fashion'});
+                    this.props.history.push('/');
+                } else {
+                    alert("fail");
+                }
+            })
+            .catch(e => console.log(e));
+        event.preventDefault();
     }
+
 
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value})
@@ -54,4 +87,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default withCookies(withRouter(Login));

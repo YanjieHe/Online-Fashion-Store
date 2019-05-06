@@ -2,10 +2,13 @@ package com.company.store.dao;
 
 import com.company.store.models.ShoppingCart;
 import com.company.store.models.ShoppingCartCompositeKey;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
 
 @Repository
 public class ShoppingCartDao {
@@ -55,4 +58,11 @@ public class ShoppingCartDao {
         session.close();
     }
 
+    public ArrayList<ShoppingCart> getAllShoppingCartItems(int customerId) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "FROM ShoppingCart WHERE customerId = '" + customerId + "'";
+        Query query = session.createQuery(hql);
+        return (ArrayList<ShoppingCart>) query.list();
+    }
 }

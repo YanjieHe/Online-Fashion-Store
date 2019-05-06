@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button, Row, Col, Container} from "react-bootstrap";
+import {Card, Row, Col, Container} from "react-bootstrap";
 import {withRouter} from 'react-router-dom';
 
 class ProductDisplay extends React.Component {
