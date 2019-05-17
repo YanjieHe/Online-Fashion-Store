@@ -13,7 +13,7 @@ class NavigationBar extends React.Component {
                     <Nav.Link href="#shop">SHOP</Nav.Link>
                     <Nav.Link href="#sale">SALE</Nav.Link>
                     <Nav.Link onClick={() => this.props.history.push('/login')}>LOGIN</Nav.Link>
-                    <Nav.Link href="#cart">CART</Nav.Link>
+                    <Nav.Link onClick={() => this.props.history.push('/shopping_cart')}>CART</Nav.Link>
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-1"/>

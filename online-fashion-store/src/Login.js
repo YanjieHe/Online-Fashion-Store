@@ -40,7 +40,7 @@ class Login extends React.Component {
             .then(text => {
                 if (text) {
                     const {cookies} = this.props;
-                    cookies.set("SessionID", text, {path: '/fashion'});
+                    cookies.set("SessionID", text, {path: '/'});
                     this.props.history.push('/');
                 } else {
                     alert("fail");

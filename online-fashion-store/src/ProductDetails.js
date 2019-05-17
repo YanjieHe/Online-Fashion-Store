@@ -15,7 +15,7 @@ class ProductDetails extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/products/" + this.productId)
+        fetch("http://localhost:8080/products/")
             .then(response => response.json())
             .then(json => {
                 console.log(json);

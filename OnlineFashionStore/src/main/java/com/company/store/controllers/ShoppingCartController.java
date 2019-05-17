@@ -29,7 +29,7 @@ public class ShoppingCartController {
         }
     }
 
-    @RequestMapping(value = "/shopping_cart", method = RequestMethod.GET)
+    @RequestMapping(value = "/shopping_cart", method = RequestMethod.POST)
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> getAllShoppingItems(@RequestBody CustomerSession customerSession) {
         try {

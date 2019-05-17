@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Login from './Login';
 import ProductDetails from "./ProductDetails";
+import ShoppingCart from "./ShoppingCart";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.render(
             <Route exact path="/" component={App}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/product/:productId" component={ProductDetails}/>
+            <Route exact path="/shopping_cart" component={ShoppingCart}/>
         </Switch>
     </BrowserRouter>, document.getElementById('root'));
 
