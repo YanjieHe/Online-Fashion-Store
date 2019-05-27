@@ -17,9 +17,12 @@ public class ShoppingCartDao {
 
     public void createShoppingCart(ShoppingCartCompositeKey shoppingCartCompositeKey) {
         try {
+            ShoppingCart shoppingCart = new ShoppingCart();
+            shoppingCart.setInventoryId(shoppingCartCompositeKey.getInventoryId());
+            shoppingCart.setCustomerId(shoppingCartCompositeKey.getCustomerId());
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            Integer id = (Integer) session.save(shoppingCartCompositeKey);
+            Integer id = (Integer) session.save(shoppingCart);
             System.out.println("ShoppingCart is created With Id::" + id);
             session.getTransaction().commit();
         } catch (Exception e) {

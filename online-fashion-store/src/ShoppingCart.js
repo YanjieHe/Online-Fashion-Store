@@ -12,7 +12,8 @@ class ShoppingCart extends React.Component {
         super(props);
         const {cookies} = props;
         this.state = {
-            sessionId: cookies.get('SessionID') || ''
+            sessionId: cookies.get('SessionID') || '',
+            product: {}
         };
     }
 
@@ -32,7 +33,9 @@ class ShoppingCart extends React.Component {
             })
                 .then(response => response.json())
                 .then(json => {
+                    console.log("retrieved information: ");
                     console.log(json);
+                    this.setState({product: json});
                 });
         }
     }

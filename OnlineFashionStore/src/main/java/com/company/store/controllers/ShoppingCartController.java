@@ -75,7 +75,7 @@ public class ShoppingCartController {
         }
     }
 
-    @RequestMapping(value = "/add_into_shopping_cart", method = RequestMethod.POST)
+    @RequestMapping(value = "/add_into_shopping_cart", method = RequestMethod.PUT)
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> addIntoShoppingCart(@RequestBody AddItem addItem ){
         try{
@@ -87,9 +87,8 @@ public class ShoppingCartController {
             return new ResponseEntity<>("Success",HttpStatus.OK);
         }catch (Exception ex) {
             ex.printStackTrace();
-            return new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Fail", HttpStatus.BAD_REQUEST);
         }
-
     }
 
 }
