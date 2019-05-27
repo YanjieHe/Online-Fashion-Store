@@ -37,28 +37,29 @@ class ProductDetails extends React.Component {
         }
     }
 
-    handleClicked(event) {
-        console.log(JSON.stringify({
-            sessionId: this.state.sessionId,
-            inventoryId: this.state.product.inventories[0].inventoryId,
-            quantity: 1
-        }));
-        fetch("http://localhost:8080/add_into_shopping_cart/", {
+    addToShoppingCart(sessionId, inventoryId, quantity) {
+        fetch("http://localhost:8080/add_to_shopping_cart/", {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                sessionId: this.state.sessionId,
-                inventoryId: this.state.product.inventories[0].inventoryId,
-                quantity: 1
+                sessionId: sessionId,
+                inventoryId: inventoryId,
+                quantity: quantity
             })
         })
             .then(response => response.text())
             .then(text => {
                 alert(text);
             });
+    }
+
+    handleClicked(event) {
+        this.addToShoppingCart(this.state.sessionId,
+            this.state.product.inventories[0].inventoryId,
+            1);
     }
 
     render() {

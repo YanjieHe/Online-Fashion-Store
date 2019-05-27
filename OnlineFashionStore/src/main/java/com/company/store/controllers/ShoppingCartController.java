@@ -75,9 +75,9 @@ public class ShoppingCartController {
         }
     }
 
-    @RequestMapping(value = "/add_into_shopping_cart", method = RequestMethod.PUT)
+    @RequestMapping(value = "/add_to_shopping_cart", method = RequestMethod.PUT)
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<Object> addIntoShoppingCart(@RequestBody AddItem addItem ){
+    public ResponseEntity<Object> addToShoppingCart(@RequestBody AddItem addItem ){
         try{
             Integer customerId = userManagementService.getCustomerId(addItem.getSessionId());
             Integer inventoryId = addItem.getInventoryId();
