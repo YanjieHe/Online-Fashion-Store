@@ -25,12 +25,12 @@ public class UserManagementService {
         boolean success = false;
         String key = "";
         while (!success) {
-            Random random = new Random();
+            Random random = new Random(); // not safe
             key = Long.toString(Math.abs(random.nextLong()));
             String id = Integer.toString(customer.getCustomerId());
             success = stringRedisTemplate.opsForValue().setIfAbsent(key, id);
             if (success) {
-                stringRedisTemplate.opsForValue().set(key, id, 60 * 10, TimeUnit.SECONDS);
+                stringRedisTemplate.opsForValue().set(key, id, 60 * 10, TimeUnit.SECONDS); // TO DO: inactive duration
             }
             // TO DO: user table
         }
