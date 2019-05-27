@@ -38,7 +38,7 @@ class ProductDetails extends React.Component {
     }
 
     addToShoppingCart(sessionId, inventoryId, quantity) {
-        fetch("http://localhost:8080/add_into_shopping_cart/", {
+        fetch("http://localhost:8080/add_to_shopping_cart/", {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
