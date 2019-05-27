@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ccc0071b-36dd-4703-9b8a-bff443383334" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ProductDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart.js" afterDir="false" />
-    </list>
+    <list default="true" id="ccc0071b-36dd-4703-9b8a-bff443383334" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -55,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ShoppingCart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+            <state relative-caret-position="157">
+              <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -120,10 +117,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="18" />
-    <option name="y" value="20" />
-    <option name="width" value="1326" />
-    <option name="height" value="681" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="656" />
+    <option name="height" value="456" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -207,12 +204,12 @@
       <workItem from="1557111290165" duration="4744000" />
       <workItem from="1557765887479" duration="134000" />
       <workItem from="1558110600070" duration="4283000" />
-      <workItem from="1558984322065" duration="3720000" />
+      <workItem from="1558984322065" duration="4330000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25680000" />
+    <option name="totallyTimeSpent" value="26290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -338,8 +335,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ShoppingCart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+        <state relative-caret-position="157">
+          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
