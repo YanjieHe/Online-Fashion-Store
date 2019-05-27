@@ -15,11 +15,11 @@ public class ShoppingCartDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void createShoppingCart(ShoppingCart shoppingCart) {
+    public void createShoppingCart(ShoppingCartCompositeKey shoppingCartCompositeKey) {
         try {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            Integer id = (Integer) session.save(shoppingCart);
+            Integer id = (Integer) session.save(shoppingCartCompositeKey);
             System.out.println("ShoppingCart is created With Id::" + id);
             session.getTransaction().commit();
         } catch (Exception e) {
