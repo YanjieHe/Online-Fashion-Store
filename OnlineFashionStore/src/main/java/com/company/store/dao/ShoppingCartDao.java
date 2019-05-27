@@ -22,7 +22,7 @@ public class ShoppingCartDao {
             shoppingCart.setCustomerId(shoppingCartCompositeKey.getCustomerId());
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            Integer id = (Integer) session.save(shoppingCart);
+            ShoppingCartCompositeKey id = (ShoppingCartCompositeKey) session.save(shoppingCart);
             System.out.println("ShoppingCart is created With Id::" + id);
             session.getTransaction().commit();
         } catch (Exception e) {
