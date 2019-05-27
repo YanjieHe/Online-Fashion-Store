@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 public class InventoryController {
 
@@ -15,8 +17,19 @@ public class InventoryController {
 
     @RequestMapping(value = "/inventory/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<Object> getInventoryById(@PathVariable(name = "id") int invertoryId ){
-        Inventory inventory = inventoryService.fetchInventoryById(invertoryId);
+    public ResponseEntity<Object> getInventoryById(@PathVariable(name = "id") int inventoryId) {
+        Inventory inventory = inventoryService.fetchInventoryById(inventoryId);
         return new ResponseEntity<>(inventory, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/inventory_list/", method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<Object> getInventoryListByIdList(@RequestBody ArrayList<Integer> idList) {
+        ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
+        for (int inventoryId : idList) {
+            Inventory inventory = inventoryService.fetchInventoryById(inventoryId);
+            inventoryList.add(inventory);
+        }
+        return new ResponseEntity<>(inventoryList, HttpStatus.OK);
     }
 }
