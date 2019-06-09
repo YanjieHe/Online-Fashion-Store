@@ -1,5 +1,7 @@
 package com.company.store.controllers;
 
+import com.company.store.models.Customer;
+import com.company.store.services.CustomerService;
 import com.company.store.services.LoginException;
 import com.company.store.services.UserManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     @Autowired
     UserManagementService userManagementService;
+
+    @Autowired
+    CustomerService customerService;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:3000")
@@ -51,4 +56,17 @@ public class CustomerController {
         }
     }
 
+    @RequestMapping(value = "/customer/{sessionId}", method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<Object> customer(@PathVariable("sessionId") long sessionId) {
+        try {
+            int customerId = userManagementService.getCustomerId(sessionId);
+            Customer customer = customerService.fetchCustomerById(customerId);
+            customer.setPassword("");
+            return new ResponseEntity<>(customer, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+        }
+    }
 }
