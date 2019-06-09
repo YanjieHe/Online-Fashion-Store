@@ -37,7 +37,8 @@ class NavigationBar extends React.Component {
             loginStatus.push(
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                        Signed in as: <a href="#login">{this.state.customer.firstName}&nbsp;{this.state.customer.lastName}</a>
+                        Signed in as: <a
+                        href="#login">{this.state.customer.firstName}&nbsp;{this.state.customer.lastName}</a>
                     </Navbar.Text>
                 </Navbar.Collapse>
             );
@@ -47,23 +48,25 @@ class NavigationBar extends React.Component {
                 <Navbar.Brand href="#home">kate spade</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link onClick={() => this.props.history.push('/')}>HOME</Nav.Link>
-                    <Nav.Link href="#new">NEW</Nav.Link>
-                    <Nav.Link href="#shop">SHOP</Nav.Link>
-                    <Nav.Link href="#sale">SALE</Nav.Link>
-                    <Nav.Link onClick={() => this.props.history.push('/login')}>LOGIN</Nav.Link>
-                    <Nav.Link onClick={() => this.props.history.push('/shopping_cart')}>CART</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.props.history.push('/shopping_cart')}>CART</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.props.history.push('/checkout')}>Checkout</NavDropdown.Item>
+                    <NavDropdown title="SHOP" id="basic-nav-dropdown">
+                        <NavDropdown.Item
+                            onClick={() => this.props.history.push('/shopping_cart')}>CART</NavDropdown.Item>
+                        <NavDropdown.Item
+                            onClick={() => this.props.history.push('/checkout')}>Checkout</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
+                        <NavDropdown.Divider/>
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
+                    <NavDropdown title="ACCOUNT" id="basic-nav-dropdown">
+                        <NavDropdown.Item onClick={() => this.props.history.push('/login')}>LOGIN</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.4">REGISTER</NavDropdown.Item>
+                    </NavDropdown>
+                    <Nav.Link href="#sale">CONTACT</Nav.Link>
                 </Nav>
                 {loginStatus}
                 {/*<Form inline>*/}
-                    {/*<FormControl type="text" placeholder="Search" className="mr-sm-1"/>*/}
-                    {/*<Button variant="outline-info">Search</Button>*/}
+                {/*<FormControl type="text" placeholder="Search" className="mr-sm-1"/>*/}
+                {/*<Button variant="outline-info">Search</Button>*/}
                 {/*</Form>*/}
             </Navbar>
         )
