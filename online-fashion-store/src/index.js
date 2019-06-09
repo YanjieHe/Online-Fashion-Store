@@ -10,6 +10,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Login from './Login';
 import ProductDetails from "./ProductDetails";
 import ShoppingCart from "./ShoppingCart";
+import Checkout from "./Checkout";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Route exact path="/login" component={Login}/>
             <Route exact path="/product/:productId" component={ProductDetails}/>
             <Route exact path="/shopping_cart" component={ShoppingCart}/>
+            <Route exact path="/checkout" component={Checkout}/>
         </Switch>
     </BrowserRouter>, document.getElementById('root'));
 

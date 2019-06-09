@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav, Navbar, Form, FormControl, Button} from "react-bootstrap";
+import {Nav, Navbar, Form, FormControl, Button, NavDropdown} from "react-bootstrap";
 import {withRouter} from 'react-router-dom';
 import {instanceOf} from "prop-types";
 import {Cookies, withCookies} from "react-cookie";
@@ -52,6 +52,13 @@ class NavigationBar extends React.Component {
                     <Nav.Link href="#sale">SALE</Nav.Link>
                     <Nav.Link onClick={() => this.props.history.push('/login')}>LOGIN</Nav.Link>
                     <Nav.Link onClick={() => this.props.history.push('/shopping_cart')}>CART</Nav.Link>
+                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                        <NavDropdown.Item onClick={() => this.props.history.push('/shopping_cart')}>CART</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.props.history.push('/checkout')}>Checkout</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    </NavDropdown>
                 </Nav>
                 {loginStatus}
                 {/*<Form inline>*/}
