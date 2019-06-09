@@ -5,18 +5,6 @@ import {withRouter} from 'react-router-dom';
 class ProductDisplay extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            products: []
-        };
-    }
-
-    componentDidMount() {
-        fetch("http://localhost:8080/trending_products/12")
-            .then(response => response.json())
-            .then(json => {
-                console.log(json);
-                this.setState({products: json})
-            });
     }
 
     renderOneProduct(productId, title, price, imageUrl) {
@@ -32,11 +20,11 @@ class ProductDisplay extends React.Component {
 
     render() {
         let rows = [];
-        let N = this.state.products.length;
+        let N = this.props.products.length;
         for (let i = 0; i < N; i = i + 3) {
             let row = [];
             for (let k = 0; k < 3 && i + k < N; k++) {
-                let product = this.state.products[i + k];
+                let product = this.props.products[i + k];
                 row.push(<Col>
                     {this.renderOneProduct(product.productId, product.productName, product.inventories[0].price, product.inventories[0].imageLink)}
                 </Col>);

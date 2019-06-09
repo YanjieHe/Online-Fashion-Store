@@ -50,12 +50,11 @@ class NavigationBar extends React.Component {
                     <Nav.Link onClick={() => this.props.history.push('/')}>HOME</Nav.Link>
                     <NavDropdown title="SHOP" id="basic-nav-dropdown">
                         <NavDropdown.Item
+                            onClick={() => this.props.history.push('/category')}>CATEGORY</NavDropdown.Item>
+                        <NavDropdown.Item
                             onClick={() => this.props.history.push('/shopping_cart')}>CART</NavDropdown.Item>
                         <NavDropdown.Item
                             onClick={() => this.props.history.push('/checkout')}>Checkout</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider/>
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="ACCOUNT" id="basic-nav-dropdown">
                         <NavDropdown.Item onClick={() => this.props.history.push('/login')}>LOGIN</NavDropdown.Item>

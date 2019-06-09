@@ -77,15 +77,15 @@ public class ShoppingCartController {
 
     @RequestMapping(value = "/add_to_shopping_cart", method = RequestMethod.PUT)
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<Object> addToShoppingCart(@RequestBody AddItem addItem ){
-        try{
+    public ResponseEntity<Object> addToShoppingCart(@RequestBody AddItem addItem) {
+        try {
             Integer customerId = userManagementService.getCustomerId(addItem.getSessionId());
             Integer inventoryId = addItem.getInventoryId();
             Integer quantity = addItem.getQuantity();
             Date date = new Date();
             shoppingCartService.createShoppingCartItem(customerId, inventoryId, date, quantity);
-            return new ResponseEntity<>("Success",HttpStatus.OK);
-        }catch (Exception ex) {
+            return new ResponseEntity<>("Success", HttpStatus.OK);
+        } catch (Exception ex) {
             ex.printStackTrace();
             return new ResponseEntity<>("Fail", HttpStatus.BAD_REQUEST);
         }

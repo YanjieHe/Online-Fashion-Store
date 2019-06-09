@@ -1,6 +1,6 @@
 import React from 'react';
-import ProductDisplay from "./ProductDisplay";
 import NavigationBar from "./NavigationBar";
+import TrendingProducts from "./TrendingProducts";
 
 class App extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class App extends React.Component {
         return (
             <div>
                 <NavigationBar/>
-                <ProductDisplay/>
+                <TrendingProducts/>
             </div>
         );
     }

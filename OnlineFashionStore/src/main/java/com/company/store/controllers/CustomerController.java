@@ -52,6 +52,7 @@ public class CustomerController {
             String key = userManagementService.login(userLogin.email, userLogin.password);
             return new ResponseEntity<>(key, HttpStatus.OK);
         } catch (LoginException ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
