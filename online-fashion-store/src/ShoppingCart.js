@@ -2,9 +2,8 @@ import React from 'react';
 import {instanceOf} from "prop-types";
 import {Cookies, withCookies} from "react-cookie";
 import {withRouter} from 'react-router-dom';
-import {Image} from "react-bootstrap";
+import {Image, Table} from "react-bootstrap";
 import NavigationBar from "./NavigationBar";
-import Table from "react-bootstrap/Table";
 
 class ShoppingCart extends React.Component {
     static propTypes = {
@@ -76,7 +75,7 @@ class ShoppingCart extends React.Component {
         for (let i = 0; i < this.state.inventoryList.length; i++) {
             console.log(inventoryList[i]);
             rows.push(<tr>
-                <td><Image src={inventoryList[i].imageLink} width="100px"></Image></td>
+                <td><Image src={inventoryList[i].imageLink} width="100px"/></td>
                 <td>Handbag</td>
                 <td>{inventoryList[i].price}</td>
                 <td>{inventoryList[i].color}</td>
