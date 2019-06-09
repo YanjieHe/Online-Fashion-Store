@@ -54,7 +54,7 @@ class NavigationBar extends React.Component {
                         <NavDropdown.Item
                             onClick={() => this.props.history.push('/shopping_cart')}>CART</NavDropdown.Item>
                         <NavDropdown.Item
-                            onClick={() => this.props.history.push('/checkout')}>Checkout</NavDropdown.Item>
+                            onClick={() => this.props.history.push('/checkout')}>CHECKOUT</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="ACCOUNT" id="basic-nav-dropdown">
                         <NavDropdown.Item onClick={() => this.props.history.push('/login')}>LOGIN</NavDropdown.Item>

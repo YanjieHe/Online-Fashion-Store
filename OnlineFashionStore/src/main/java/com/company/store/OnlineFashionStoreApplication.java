@@ -104,7 +104,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         Customer bar = new Customer();
         bar.setCustomerId(2);
         bar.setEmail("bar@gmail.com");
-        foo.setPassword("4321");
+        bar.setPassword("4321");
         bar.setFirstName("Bar");
         bar.setLastName("B");
         customerService.createCustomer(bar);
