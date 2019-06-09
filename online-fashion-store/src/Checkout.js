@@ -41,7 +41,9 @@ class Checkout extends React.Component {
                                     <Form.Label>State</Form.Label>
                                     <Form.Control as="select">
                                         <option>Choose...</option>
-                                        <option>...</option>
+                                        <option>DC</option>
+                                        <option>VA</option>
+                                        <option>MD</option>
                                     </Form.Control>
                                 </Form.Group>
 
