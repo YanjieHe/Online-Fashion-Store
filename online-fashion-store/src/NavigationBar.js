@@ -37,15 +37,14 @@ class NavigationBar extends React.Component {
             loginStatus.push(
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                        Signed in as: <a
-                        href="#login">{this.state.customer.firstName}&nbsp;{this.state.customer.lastName}</a>
+                        Signed in as: {this.state.customer.firstName}&nbsp;{this.state.customer.lastName}
                     </Navbar.Text>
                 </Navbar.Collapse>
             );
         }
         return (
             <Navbar bg="dark" variant="dark" fixed="top">
-                <Navbar.Brand href="#home">kate spade</Navbar.Brand>
+                <Navbar.Brand href="#" onClick={() => this.props.history.push('/')}>FARFETCH</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link onClick={() => this.props.history.push('/')}>HOME</Nav.Link>
                     <NavDropdown title="SHOP" id="basic-nav-dropdown">

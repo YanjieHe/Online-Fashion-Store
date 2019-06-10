@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ccc0071b-36dd-4703-9b8a-bff443383334" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OnlineFashionStore/src/main/java/com/company/store/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OnlineFashionStore/src/main/java/com/company/store/dao/CustomerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checkout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NavigationBar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,11 +27,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Checkout.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
+            <state relative-caret-position="1806">
               <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/NavigationBar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -86,11 +95,11 @@
         <option value="$PROJECT_DIR$/src/TrendingProducts.js" />
         <option value="$PROJECT_DIR$/src/ProductDisplay.js" />
         <option value="$PROJECT_DIR$/src/ProductCategory.js" />
-        <option value="$PROJECT_DIR$/src/NavigationBar.js" />
         <option value="$PROJECT_DIR$/src/ShoppingCart.css" />
         <option value="$PROJECT_DIR$/src/ShoppingCart.js" />
         <option value="$PROJECT_DIR$/src/Checkout.css" />
         <option value="$PROJECT_DIR$/src/Checkout.js" />
+        <option value="$PROJECT_DIR$/src/NavigationBar.js" />
       </list>
     </option>
   </component>
@@ -182,24 +191,24 @@
       <workItem from="1557765887479" duration="134000" />
       <workItem from="1558110600070" duration="4283000" />
       <workItem from="1558984322065" duration="9029000" />
-      <workItem from="1560041980740" duration="17462000" />
+      <workItem from="1560041980740" duration="18260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48451000" />
+    <option name="totallyTimeSpent" value="49249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.20585048" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20585048" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -291,16 +300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NavigationBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1291">
-          <caret line="62" column="61" lean-forward="true" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TrendingProducts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -357,8 +356,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Checkout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="1806">
           <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NavigationBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
