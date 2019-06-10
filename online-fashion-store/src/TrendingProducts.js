@@ -11,7 +11,7 @@ class TrendingProducts extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/trending_products/12")
+        fetch("/trending_products/12")
             .then(response => response.json())
             .then(json => {
                 console.log(json);

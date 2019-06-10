@@ -22,7 +22,7 @@ class ShoppingCart extends React.Component {
     }
 
     getInventoryList(inventoryIdList) {
-        fetch("http://localhost:8080/inventory_list/", {
+        fetch("/inventory_list/", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -44,7 +44,7 @@ class ShoppingCart extends React.Component {
         if (this.state.sessionId === '') {
             this.props.history.push('/login');
         } else {
-            fetch("http://localhost:8080/shopping_cart/", {
+            fetch("/shopping_cart/", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

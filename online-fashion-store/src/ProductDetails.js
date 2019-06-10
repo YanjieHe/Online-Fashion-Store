@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image";
 import {instanceOf} from "prop-types";
 import {Cookies, withCookies} from "react-cookie";
 import {withRouter} from 'react-router-dom';
+import base from './Url';
 
 class ProductDetails extends React.Component {
     static propTypes = {
@@ -18,7 +19,12 @@ class ProductDetails extends React.Component {
         this.state = {
             sessionId: cookies.get('SessionID') || '',
             product: {
-                inventories: [""]
+                inventories: [{
+                    imageLink: "",
+                    price: "",
+                    name: "",
+                    description: ""
+                }]
             }
         };
         this.handleClicked = this.handleClicked.bind(this);
@@ -28,17 +34,22 @@ class ProductDetails extends React.Component {
         if (this.state.sessionId === '') {
             this.props.history.push('/login');
         } else {
-            fetch("http://localhost:8080/products/" + this.productId)
-                .then(response => response.json())
-                .then(json => {
-                    console.log(json);
-                    this.setState({product: json})
+            fetch( "/products/" + this.productId)
+                .then(response => {
+                    if (response.ok) {
+                        response.json().then(json => {
+                            console.log(json);
+                            this.setState({product: json})
+                        });
+                    } else {
+
+                    }
                 });
         }
     }
 
     addToShoppingCart(sessionId, inventoryId, quantity) {
-        fetch("http://localhost:8080/add_to_shopping_cart/", {
+        fetch(base + "/add_to_shopping_cart", {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

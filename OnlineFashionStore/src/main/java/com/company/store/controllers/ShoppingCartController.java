@@ -33,7 +33,6 @@ public class ShoppingCartController {
     }
 
     @RequestMapping(value = "/shopping_cart", method = RequestMethod.POST)
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> getAllShoppingItems(@RequestBody CustomerSession customerSession) {
         try {
             int customerId = userManagementService.getCustomerId(customerSession.sessionId);
@@ -76,7 +75,6 @@ public class ShoppingCartController {
     }
 
     @RequestMapping(value = "/add_to_shopping_cart", method = RequestMethod.PUT)
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> addToShoppingCart(@RequestBody AddItem addItem) {
         try {
             Integer customerId = userManagementService.getCustomerId(addItem.getSessionId());

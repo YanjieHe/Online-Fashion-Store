@@ -18,7 +18,6 @@ public class CustomerController {
     CustomerService customerService;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> getAllCustomers() {
         return new ResponseEntity<>("This is a test.", HttpStatus.OK);
     }
@@ -46,7 +45,6 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> login(@RequestBody UserLogin userLogin) {
         try {
             String key = userManagementService.login(userLogin.email, userLogin.password);
@@ -58,7 +56,6 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customer/{sessionId}", method = RequestMethod.GET)
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Object> customer(@PathVariable("sessionId") long sessionId) {
         try {
             int customerId = userManagementService.getCustomerId(sessionId);

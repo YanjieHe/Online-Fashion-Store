@@ -20,7 +20,7 @@ class NavigationBar extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/customer/" + this.state.sessionId)
+        fetch("/customer/" + this.state.sessionId)
             .then(response => {
                 if (response.ok) {
                     response.json().then(json =>

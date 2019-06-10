@@ -11,7 +11,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/test")
+        fetch("/test")
             .then(response => response.text())
             .then(text => this.setState({text: text}));
     }

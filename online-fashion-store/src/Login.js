@@ -21,7 +21,7 @@ class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        fetch('http://localhost:8080/login/', {
+        fetch('/login/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
