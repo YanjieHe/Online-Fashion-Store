@@ -75,14 +75,14 @@ class Checkout extends React.Component {
         let inventoryList = this.state.inventoryList;
         let subtotal = 0;
         for (let i = 0; i < this.state.inventoryList.length; i++) {
-            let total = parseFloat(inventoryList[i].quantity) * parseFloat(inventoryList[i].price);
+            let total = parseFloat(this.state.cart[i].quantity) * parseFloat(inventoryList[i].price);
             rows.push(
                 <tr>
                     <td id="product">
                          Handbag {i}
                     </td>
                     <td id="product">
-                        x&nbsp;{inventoryList[i].quantity}
+                        x&nbsp;{this.state.cart[i].quantity}
                     </td>
                     <td id="product">
                         ${total.toFixed(2)}

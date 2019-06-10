@@ -81,7 +81,7 @@ class ShoppingCart extends React.Component {
                 <td id="cart">${inventoryList[i].price.toFixed(2)}</td>
                 <td id="cart">{inventoryList[i].color}</td>
                 <td id="cart">{inventoryList[i].size}</td>
-                <td id="cart">{inventoryList[i].quantity}</td>
+                <td id="cart">{this.state.cart[i].quantity}</td>
                 <td id="cart">
                     <ButtonToolbar>
                         <Button variant="primary">Move to Wish List</Button>
