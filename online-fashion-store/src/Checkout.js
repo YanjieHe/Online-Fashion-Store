@@ -1,9 +1,97 @@
 import React from 'react';
 import NavigationBar from './NavigationBar';
-import {Form, Container, Row, Col, Button} from 'react-bootstrap';
+import {Form, Container, Row, Col, Button, Table} from 'react-bootstrap';
+import {instanceOf} from "prop-types";
+import {Cookies, withCookies} from "react-cookie";
+import {withRouter} from 'react-router-dom';
+import "./Checkout.css";
 
 class Checkout extends React.Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+
+    constructor(props) {
+        super(props);
+        const {cookies} = props;
+        this.state = {
+            sessionId: cookies.get('SessionID') || '',
+            cart: [],
+            inventoryList: {}
+        };
+    }
+
+    getInventoryList(inventoryIdList) {
+        fetch("http://localhost:8080/inventory_list/", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    inventoryIdList)
+            }
+        )
+            .then(response => response.json())
+            .then(json => {
+                console.log("inventory: ");
+                console.log(json);
+                this.setState({inventoryList: json})
+            });
+    }
+
+    componentDidMount() {
+        if (this.state.sessionId === '') {
+            this.props.history.push('/login');
+        } else {
+            fetch("http://localhost:8080/shopping_cart/", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    sessionId: this.state.sessionId
+                })
+            })
+                .then(response => response.json())
+                .then(json => {
+                    console.log("retrieved information: ");
+                    console.log(json);
+                    this.setState({cart: json}, () => {
+                        let inventoryIdList = [];
+                        for (let i = 0; i < this.state.cart.length; i++) {
+                            let inventoryId = this.state.cart[i].inventoryId;
+                            inventoryIdList.push(inventoryId);
+                        }
+                        this.getInventoryList(inventoryIdList);
+                    });
+                });
+        }
+    }
+
     render() {
+        let rows = [];
+        let inventoryList = this.state.inventoryList;
+        let subtotal = 0;
+        for (let i = 0; i < this.state.inventoryList.length; i++) {
+            let total = parseFloat(inventoryList[i].quantity) * parseFloat(inventoryList[i].price);
+            rows.push(
+                <tr>
+                    <td id="product">
+                         Handbag {i}
+                    </td>
+                    <td id="product">
+                        x&nbsp;{inventoryList[i].quantity}
+                    </td>
+                    <td id="product">
+                        ${total.toFixed(2)}
+                    </td>
+                </tr>
+            );
+            subtotal = subtotal + total;
+        }
+        let shipping = 50;
         return <div>
             <NavigationBar/>
             <Container fluid>
@@ -63,19 +151,52 @@ class Checkout extends React.Component {
                                     <Form.Control/>
                                 </Form.Group>
                             </Form.Row>
-                            <Button variant="primary" type="submit">
-                                Checkout
-                            </Button>
+                            <Form.Row>
+                                <Form.Group as={Col} controlId="formGridPayment">
+                                    <Form.Label>Payment</Form.Label>
+                                    <Form.Control as="select">
+                                        <option>Choose...</option>
+                                        <option>Debit Card</option>
+                                        <option>Credit Card</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                <Form.Group as={Col} controlId="cardNumber">
+                                    <Form.Label>Card Number</Form.Label>
+                                    <Form.Control/>
+                                </Form.Group>
+                            </Form.Row>
                         </Form>
                     </Col>
                     <Col>
-                        <h3>Order</h3>
-                        <hr/>
-                        <ul>
-                            <li>Handbag 1</li>
-                            <li>Handbag 2</li>
-                            <li>Handbag 3</li>
-                        </ul>
+                        <h3>Your Order</h3>
+                        <Table>
+                            <thead>
+                            <td>Product</td>
+                            <td></td>
+                            <td>Total</td>
+                            </thead>
+                            <tbody>
+                            {rows}
+                            <tr>
+                                <td>SUBTOTAL</td>
+                                <td></td>
+                                <td>${subtotal.toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td>SHIPPING</td>
+                                <td></td>
+                                <td>Flat rate: ${shipping.toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td>${(subtotal + shipping).toFixed(2)}</td>
+                            </tr>
+                            </tbody>
+                        </Table>
+                        <Button variant="primary" type="submit" block>
+                            Checkout
+                        </Button>
                     </Col>
                 </Row>
             </Container>
@@ -83,4 +204,4 @@ class Checkout extends React.Component {
     }
 }
 
-export default Checkout;
+export default withCookies(withRouter(Checkout));

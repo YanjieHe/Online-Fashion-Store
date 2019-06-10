@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ccc0071b-36dd-4703-9b8a-bff443383334" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ShoppingCart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OnlineFashionStore/src/main/java/com/company/store/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OnlineFashionStore/src/main/java/com/company/store/dao/CustomerDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Checkout.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +18,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ShoppingCart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="106" column="87" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
+            <state relative-caret-position="283">
+              <caret line="83" column="56" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Checkout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -30,13 +43,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ProductDisplay.js">
+        <entry file="file://$PROJECT_DIR$/src/Checkout.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="89" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="89" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="21">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -77,13 +87,14 @@
         <option value="$PROJECT_DIR$/src/ProductDisplay.js" />
         <option value="$PROJECT_DIR$/src/ProductCategory.js" />
         <option value="$PROJECT_DIR$/src/NavigationBar.js" />
-        <option value="$PROJECT_DIR$/src/Checkout.js" />
         <option value="$PROJECT_DIR$/src/ShoppingCart.css" />
         <option value="$PROJECT_DIR$/src/ShoppingCart.js" />
+        <option value="$PROJECT_DIR$/src/Checkout.css" />
+        <option value="$PROJECT_DIR$/src/Checkout.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="656" />
     <option name="height" value="456" />
   </component>
@@ -171,12 +182,12 @@
       <workItem from="1557765887479" duration="134000" />
       <workItem from="1558110600070" duration="4283000" />
       <workItem from="1558984322065" duration="9029000" />
-      <workItem from="1560041980740" duration="13983000" />
+      <workItem from="1560041980740" duration="17462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44972000" />
+    <option name="totallyTimeSpent" value="48451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -270,16 +281,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Checkout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="44" column="50" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ProductCategory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -339,8 +340,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ShoppingCart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="106" column="87" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
+        <state relative-caret-position="283">
+          <caret line="83" column="56" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Checkout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Checkout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -67,6 +67,8 @@ public class CustomerDao {
             session.close();
             return customer;
         } else {
+            session.getTransaction().commit();
+            session.close();
             return null;
         }
     }
