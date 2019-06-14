@@ -62,6 +62,9 @@ public class CustomerController {
             Customer customer = customerService.fetchCustomerById(customerId);
             customer.setPassword("");
             return new ResponseEntity<>(customer, HttpStatus.OK);
+        } catch (UserManagementService.CustomerNotFoundException e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>("CustomerNotFoundException", HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);

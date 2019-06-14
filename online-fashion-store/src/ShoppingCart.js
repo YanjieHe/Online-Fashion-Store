@@ -20,25 +20,6 @@ class ShoppingCart extends React.Component {
         };
     }
 
-    // getInventoryList(inventoryIdList) {
-    //     fetch("/inventory_list/", {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(
-    //                 inventoryIdList)
-    //         }
-    //     )
-    //         .then(response => response.json())
-    //         .then(json => {
-    //             console.log("inventory: ");
-    //             console.log(json);
-    //             this.setState({inventoryList: json})
-    //         });
-    // }
-
     componentDidMount() {
         if (this.state.sessionId === '') {
             this.props.history.push('/login');
@@ -72,7 +53,7 @@ class ShoppingCart extends React.Component {
                 <td id="cart">${cart[i].price.toFixed(2)}</td>
                 <td id="cart">{cart[i].color}</td>
                 <td id="cart">{cart[i].size}</td>
-                <td id="cart">{this.state.cart[i].quantity}</td>
+                <td id="cart">{cart[i].quantity}</td>
                 <td id="cart">
                     <ButtonToolbar>
                         <Button variant="primary">Move to Wish List</Button>

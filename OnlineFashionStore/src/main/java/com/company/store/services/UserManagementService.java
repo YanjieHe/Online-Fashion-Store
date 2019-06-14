@@ -37,11 +37,17 @@ public class UserManagementService {
         return key;
     }
 
-    public int getCustomerId(long sessionId) throws Exception {
+    public static class CustomerNotFoundException extends Exception {
+        public CustomerNotFoundException(String message) {
+            super(message);
+        }
+    }
+
+    public int getCustomerId(long sessionId) throws CustomerNotFoundException {
         String key = Long.toString(sessionId);
         String customerId = stringRedisTemplate.opsForValue().get(Long.toString(sessionId));
         if (customerId == null) {
-            throw new Exception("cannot find customer id");
+            throw new CustomerNotFoundException("cannot find customer id");
         }
         return Integer.parseInt(customerId);
     }

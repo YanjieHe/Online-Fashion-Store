@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationBar from "./NavigationBar";
-import {Button, ButtonToolbar, Col, Container, Row} from "react-bootstrap";
+import {Button, ButtonToolbar, Col, Container, FormControl, InputGroup, Row} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import {instanceOf} from "prop-types";
 import {Cookies, withCookies} from "react-cookie";
@@ -25,16 +25,18 @@ class ProductDetails extends React.Component {
                     name: "",
                     description: ""
                 }]
-            }
+            },
+            quantity: 1
         };
         this.handleClicked = this.handleClicked.bind(this);
+        this.handleChanged = this.handleChanged.bind(this);
     }
 
     componentDidMount() {
         if (this.state.sessionId === '') {
             this.props.history.push('/login');
         } else {
-            fetch( "/products/" + this.productId)
+            fetch("/products/" + this.productId)
                 .then(response => {
                     if (response.ok) {
                         response.json().then(json => {
@@ -61,22 +63,29 @@ class ProductDetails extends React.Component {
                 quantity: quantity
             })
         })
-            .then(response => response.text())
-            .then(text => {
-                alert(text);
-            });
+            .then(response => {
+                if(response.ok){
+                    alert("Successfully added to your shopping cart");
+                } else {
+                    alert("Please login first");
+                }
+            })
     }
 
     handleClicked(event) {
         this.addToShoppingCart(this.state.sessionId,
             this.state.product.inventories[0].inventoryId,
-            1);
+            this.state.quantity);
+    }
+
+    handleChanged(event) {
+        this.setState({quantity: event.target.value});
     }
 
     render() {
         let imageLink = this.state.product.inventories[0].imageLink;
         let price = this.state.product.inventories[0].price;
-        let name = this.state.product.name;
+        let productName = this.state.product.productName;
         let description = this.state.product.description;
         return <div>
             <NavigationBar/>
@@ -86,14 +95,22 @@ class ProductDetails extends React.Component {
                         <Image src={imageLink}/>
                     </Col>
                     <Col>
-                        <h3> {name}</h3>
+                        <h3> {productName}</h3>
                         ${price}
+                        <hr/>
                         <p>
                             {description}
                         </p>
+                        <hr/>
+                        <InputGroup className="mb-3">
+                            <InputGroup.Prepend>
+                                <InputGroup.Text>Quantity</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <FormControl aria-label="Amount (to the nearest dollar)" value={this.state.quantity}
+                                         onChange={this.handleChanged}/>
+                        </InputGroup>
                         <ButtonToolbar>
                             <Button variant="primary" size="lg" block onClick={this.handleClicked}>Add to cart</Button>
-                            <Button variant="primary" size="lg" block>Buy it!</Button>
                         </ButtonToolbar>
                     </Col>
                 </Row>

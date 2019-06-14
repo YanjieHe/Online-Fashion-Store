@@ -81,8 +81,10 @@ public class ShoppingCartController {
             Date date = new Date();
             shoppingCartService.createShoppingCartItem(customerId, inventoryId, date, quantity);
             return new ResponseEntity<>("Success", HttpStatus.OK);
+        } catch (UserManagementService.CustomerNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return new ResponseEntity<>("CustomerNotFoundException", HttpStatus.BAD_REQUEST);
         } catch (Exception ex) {
-//            ex.printStackTrace();
             System.out.println(ex.getMessage());
             return new ResponseEntity<>("Fail", HttpStatus.BAD_REQUEST);
         }
