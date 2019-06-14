@@ -49,10 +49,28 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         name.add("Large Blue Bag");
         name.add("Large White Bag");
         name.add("Large Black Bag");
+        name.add("tie-front dress");
+        name.add("plaid tweed sleeveless dress");
+        name.add("fluid suiting blazer");
+        name.add("femme denim jacket");
+        name.add("scallop textured sweater");
+        name.add("garden posy smocked top");
+        name.add("aaron sneakers");
+        name.add("fallyn flats");
+        name.add("jonah loafers");
         ArrayList<String> link = new ArrayList<String>();
         link.add("https://katespade.insnw.net/KateSpade/PXRUA160_399?$large$");
         link.add("https://katespade.insnw.net/KateSpade/PXRUA350_104?$large$");
         link.add("https://katespade.insnw.net/KateSpade/PXRUA350_429?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/NJMUA584_334?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/NJMUA572_558?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/NJMUA600_153?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/NJMUA525_174?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/NJMUA623_203?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/NJMUA545_203?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/S2120020_003?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/S2350001_104?$large$");
+        link.add("https://katespade.insnw.net/KateSpade/S2261004_650?$large$");
         ArrayList<String> color = new ArrayList<String>();
         color.add("blue");
         color.add("white");
@@ -63,7 +81,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
             Product product = new Product();
             product.setProductId(i + 1);
             product.setCategoryId(1);
-            product.setName(name.get(k));
+            product.setName(name.get(i));
             product.setPostDate(new GregorianCalendar(2019, Calendar.APRIL, 29).getTime());
             product.setScore(4.0);
             product.setDescription("satchel with zipper closure");
@@ -71,7 +89,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
 
             Inventory inventory = new Inventory();
             inventory.setColor(color.get(k));
-            inventory.setImageLink(link.get(k));
+            inventory.setImageLink(link.get(i));
             inventory.setPrice(100.0);
             inventory.setInventoryId(i + 1);
             inventory.setProductId(i + 1);
