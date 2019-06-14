@@ -6,11 +6,9 @@ import com.company.store.services.UserManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import com.company.store.services.UserManagementService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 @RestController
@@ -36,7 +34,7 @@ public class ShoppingCartController {
     public ResponseEntity<Object> getAllShoppingItems(@RequestBody CustomerSession customerSession) {
         try {
             int customerId = userManagementService.getCustomerId(customerSession.sessionId);
-            ArrayList<ShoppingCart> shoppingCarts = shoppingCartService.getAllShoppingCartItems(customerId);
+            ArrayList<ShoppingCartService.ShoppingCartItemInfo> shoppingCarts = shoppingCartService.getAllShoppingCartItems(customerId);
             return new ResponseEntity<>(shoppingCarts, HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -84,7 +82,8 @@ public class ShoppingCartController {
             shoppingCartService.createShoppingCartItem(customerId, inventoryId, date, quantity);
             return new ResponseEntity<>("Success", HttpStatus.OK);
         } catch (Exception ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            System.out.println(ex.getMessage());
             return new ResponseEntity<>("Fail", HttpStatus.BAD_REQUEST);
         }
     }

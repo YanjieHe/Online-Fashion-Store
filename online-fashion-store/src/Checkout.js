@@ -16,35 +16,15 @@ class Checkout extends React.Component {
         const {cookies} = props;
         this.state = {
             sessionId: cookies.get('SessionID') || '',
-            cart: [],
-            inventoryList: {}
+            cart: []
         };
-    }
-
-    getInventoryList(inventoryIdList) {
-        fetch("/inventory_list/", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(
-                    inventoryIdList)
-            }
-        )
-            .then(response => response.json())
-            .then(json => {
-                console.log("inventory: ");
-                console.log(json);
-                this.setState({inventoryList: json})
-            });
     }
 
     componentDidMount() {
         if (this.state.sessionId === '') {
             this.props.history.push('/login');
         } else {
-            fetch("shopping_cart/", {
+            fetch("/shopping_cart/", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -55,34 +35,23 @@ class Checkout extends React.Component {
                 })
             })
                 .then(response => response.json())
-                .then(json => {
-                    console.log("retrieved information: ");
-                    console.log(json);
-                    this.setState({cart: json}, () => {
-                        let inventoryIdList = [];
-                        for (let i = 0; i < this.state.cart.length; i++) {
-                            let inventoryId = this.state.cart[i].inventoryId;
-                            inventoryIdList.push(inventoryId);
-                        }
-                        this.getInventoryList(inventoryIdList);
-                    });
-                });
+                .then(json => this.setState({cart: json}));
         }
     }
 
     render() {
         let rows = [];
-        let inventoryList = this.state.inventoryList;
+        let cart = this.state.cart;
         let subtotal = 0;
-        for (let i = 0; i < this.state.inventoryList.length; i++) {
-            let total = parseFloat(this.state.cart[i].quantity) * parseFloat(inventoryList[i].price);
+        for (let i = 0; i < cart.length; i++) {
+            let total = parseFloat(cart[i].quantity) * parseFloat(cart[i].price);
             rows.push(
                 <tr>
                     <td id="product">
-                         Handbag {i}
+                        {cart[i].name}
                     </td>
                     <td id="product">
-                        x&nbsp;{this.state.cart[i].quantity}
+                        x&nbsp;{cart[i].quantity}
                     </td>
                     <td id="product">
                         ${total.toFixed(2)}

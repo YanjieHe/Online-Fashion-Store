@@ -16,29 +16,28 @@ class ShoppingCart extends React.Component {
         const {cookies} = props;
         this.state = {
             sessionId: cookies.get('SessionID') || '',
-            cart: [],
-            inventoryList: {}
+            cart: []
         };
     }
 
-    getInventoryList(inventoryIdList) {
-        fetch("/inventory_list/", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(
-                    inventoryIdList)
-            }
-        )
-            .then(response => response.json())
-            .then(json => {
-                console.log("inventory: ");
-                console.log(json);
-                this.setState({inventoryList: json})
-            });
-    }
+    // getInventoryList(inventoryIdList) {
+    //     fetch("/inventory_list/", {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(
+    //                 inventoryIdList)
+    //         }
+    //     )
+    //         .then(response => response.json())
+    //         .then(json => {
+    //             console.log("inventory: ");
+    //             console.log(json);
+    //             this.setState({inventoryList: json})
+    //         });
+    // }
 
     componentDidMount() {
         if (this.state.sessionId === '') {
@@ -58,29 +57,21 @@ class ShoppingCart extends React.Component {
                 .then(json => {
                     console.log("retrieved information: ");
                     console.log(json);
-                    this.setState({cart: json}, () => {
-                        let inventoryIdList = [];
-                        for (let i = 0; i < this.state.cart.length; i++) {
-                            let inventoryId = this.state.cart[i].inventoryId;
-                            inventoryIdList.push(inventoryId);
-                        }
-                        this.getInventoryList(inventoryIdList);
-                    });
+                    this.setState({cart: json})
                 });
         }
     }
 
     render() {
         let rows = [];
-        let inventoryList = this.state.inventoryList;
-        for (let i = 0; i < this.state.inventoryList.length; i++) {
-            console.log(inventoryList[i]);
+        let cart = this.state.cart;
+        for (let i = 0; i < cart.length; i++) {
             rows.push(<tr>
-                <td id="cart"><Image src={inventoryList[i].imageLink} width="50px"/></td>
-                <td id="cart">Handbag</td>
-                <td id="cart">${inventoryList[i].price.toFixed(2)}</td>
-                <td id="cart">{inventoryList[i].color}</td>
-                <td id="cart">{inventoryList[i].size}</td>
+                <td id="cart"><Image src={cart[i].imageLink} width="50px"/></td>
+                <td id="cart">{cart[i].name}</td>
+                <td id="cart">${cart[i].price.toFixed(2)}</td>
+                <td id="cart">{cart[i].color}</td>
+                <td id="cart">{cart[i].size}</td>
                 <td id="cart">{this.state.cart[i].quantity}</td>
                 <td id="cart">
                     <ButtonToolbar>
