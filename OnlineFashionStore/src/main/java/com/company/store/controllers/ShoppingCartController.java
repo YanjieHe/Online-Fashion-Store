@@ -1,6 +1,5 @@
 package com.company.store.controllers;
 
-import com.company.store.models.ShoppingCart;
 import com.company.store.services.ShoppingCartService;
 import com.company.store.services.UserManagementService;
 import org.springframework.beans.factory.annotation.Autowired;

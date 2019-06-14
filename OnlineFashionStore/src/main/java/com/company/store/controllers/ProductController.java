@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 public class ProductController {
@@ -27,5 +28,22 @@ public class ProductController {
     public ResponseEntity<Object> fetchTrendingProducts(@PathVariable(name = "amount") int amount) {
         ArrayList<ProductInfo> productInfos = productService.fetchTrendingProducts(amount);
         return new ResponseEntity<>(productInfos, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/filter_products", method = RequestMethod.POST)
+    public ResponseEntity<Object> filterProducts(@RequestBody HashMap<String, HashMap<String, Boolean>> parameters) {
+        HashMap<String, ArrayList<String>> params = new HashMap<>();
+        for (String key : parameters.keySet()) {
+            HashMap<String, Boolean> map = parameters.get(key);
+            ArrayList<String> items = new ArrayList<>();
+            for (String k : map.keySet()) {
+                if (map.get(k)) {
+                    items.add(k);
+                }
+            }
+            params.put(key, items);
+        }
+        ArrayList<ProductInfo> productInfoArrayList = productService.filterProducts(params);
+        return new ResponseEntity<>(productInfoArrayList, HttpStatus.OK);
     }
 }

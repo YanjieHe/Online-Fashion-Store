@@ -8,9 +8,11 @@ class ProductCategory extends React.Component {
         super(props);
         this.state = {
             products: [],
-            sortCriteria: "SORT"
+            sortCriteria: "SORT",
+            options: {}
         };
         this.handleSortCriteriaClick = this.handleSortCriteriaClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -23,6 +25,48 @@ class ProductCategory extends React.Component {
 
     handleSortCriteriaClick(criteria) {
         this.setState({sortCriteria: criteria});
+    }
+
+    handleChange(category, value, event) {
+        let checked = event.target.checked;
+        if (checked) {
+            if (category in this.state.options) {
+                if (value in this.state.options[category]) {
+                    return this.state.options[category];
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    check(category, value) {
+        if (category in this.state.options) {
+            if (value in this.state.options[category]) {
+                return this.state.options[category];
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    option(category, value) {
+        return <InputGroup className="mb-3">
+            <InputGroup.Prepend>
+                <InputGroup.Checkbox aria-label="Checkbox for following text input" checked={() =>
+                    this.check(category, value)}
+                                     onChange={event => this.handleChange(category, value, event)}/>
+            </InputGroup.Prepend>
+            <InputGroup.Prepend>
+                <InputGroup.Text>{value}</InputGroup.Text>
+            </InputGroup.Prepend>
+        </InputGroup>
     }
 
     render() {
@@ -80,22 +124,8 @@ class ProductCategory extends React.Component {
                             <hr/>
                             <div>
                                 <h4>Color</h4>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Black</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>White</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
+                                {this.option("Color", "Black")}
+                                {this.option("Color", "White")}
                             </div>
                             <div>
                                 <h4>Size</h4>

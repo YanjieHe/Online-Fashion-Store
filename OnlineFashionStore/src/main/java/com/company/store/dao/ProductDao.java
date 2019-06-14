@@ -83,4 +83,15 @@ public class ProductDao {
         session.close();
         return inventories;
     }
+
+    public ArrayList<Inventory> filterProducts(String condition) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "FROM Inventory WHERE " + condition + ";";
+        Query query = session.createQuery(hql);
+        ArrayList<Inventory> inventories =(ArrayList<Inventory>) query.list();
+        session.getTransaction().commit();
+        session.close();
+        return inventories;
+    }
 }

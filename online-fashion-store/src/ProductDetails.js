@@ -85,6 +85,8 @@ class ProductDetails extends React.Component {
     render() {
         let imageLink = this.state.product.inventories[0].imageLink;
         let price = this.state.product.inventories[0].price;
+        let size = this.state.product.inventories[0].size;
+        let color = this.state.product.inventories[0].color;
         let productName = this.state.product.productName;
         let description = this.state.product.description;
         return <div>
@@ -97,6 +99,8 @@ class ProductDetails extends React.Component {
                     <Col>
                         <h3> {productName}</h3>
                         ${price}
+                        {size}
+                        {color}
                         <hr/>
                         <p>
                             {description}
