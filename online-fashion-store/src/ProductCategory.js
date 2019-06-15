@@ -34,13 +34,19 @@ class ProductCategory extends React.Component {
                         .then(json => {
                             console.log("retrieved information");
                             console.log(json);
+                            console.log(this.state.sortCriteria);
+                            if (this.state.sortCriteria === "price high to low") {
+                                json.sort((a, b) => a.inventories[0].price < b.inventories[0].price);
+                            } else if (this.state.sortCriteria === "price low to high") {
+                                json.sort((a, b) => a.inventories[0].price > b.inventories[0].price);
+                            }
                             this.setState({products: json})
                         })
             ));
     }
 
     handleSortCriteriaClick(criteria) {
-        this.setState({sortCriteria: criteria});
+        this.setState({sortCriteria: criteria}, () => this.componentDidMount());
     }
 
     handleChange(category, value, event) {

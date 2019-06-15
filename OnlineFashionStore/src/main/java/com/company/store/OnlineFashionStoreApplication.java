@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 
 @SpringBootApplication
@@ -76,6 +77,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         color.add("White");
         color.add("Black");
 
+        Random random = new Random();
         for (int i = 0; i < 12; i++) {
             int k = i % 3;
             Product product = new Product();
@@ -90,7 +92,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
             Inventory inventory = new Inventory();
             inventory.setColor(color.get(k));
             inventory.setImageLink(link.get(i));
-            inventory.setPrice(100.0);
+            inventory.setPrice((double) (Math.abs(random.nextInt()) % 900 + 100));
             inventory.setInventoryId(i + 1);
             inventory.setProductId(i + 1);
             inventory.setQuantity(10);
