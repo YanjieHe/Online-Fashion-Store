@@ -1,5 +1,6 @@
 package com.company.store.services;
 
+import com.company.store.dao.InventoryDao;
 import com.company.store.dao.ProductDao;
 import com.company.store.models.Inventory;
 import com.company.store.models.Product;
@@ -54,7 +55,7 @@ public class ProductService {
                     query.append(category).append(" = ").append("'").append(item).append("' ");
                     first = false;
                 } else {
-                    query.append("and ").append(category).append(" = '").append(item).append("' ");
+                    query.append("OR ").append(category).append(" = '").append(item).append("' ");
                 }
             }
         }
@@ -67,18 +68,37 @@ public class ProductService {
         boolean first = true;
         first = addFilter(query, first, "Size", parameters);
         first = addFilter(query, first, "Color", parameters);
+        if (first) {
+            return fetchTrendingProducts(12);
+        }
         ArrayList<Inventory> inventories = productDao.filterProducts(query.toString());
         for (Inventory inventory : inventories) {
-            ProductInfo productInfo = new ProductInfo();
-            Product product = productDao.read(inventory.getProductId());
-            productInfo.setProductName(product.getName());
-            productInfo.setScore(product.getScore());
-            productInfo.setDescription(product.getDescription());
-            productInfo.setCategoryId(product.getCategoryId());
-            productInfo.setPostDate(product.getPostDate());
-            productInfo.setProductId(product.getProductId());
+            ProductInfo productInfo = fetchProductInfo(inventory.getProductId());
             result.add(productInfo);
         }
         return result;
+    }
+
+    public ArrayList<String> getAllColor() {
+        return productDao.getAllDistinctValues("Inventory", "color");
+    }
+
+    public ArrayList<String> getAllSize() {
+        return productDao.getAllDistinctValues("Inventory", "size");
+    }
+
+    public HashMap<String, ArrayList<String>> getDistinctValues() {
+        ArrayList<String> colorList = getAllColor();
+        ArrayList<String> sizeList = getAllSize();
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        map.put("Color", new ArrayList<String>());
+        map.put("Size", new ArrayList<String>());
+        for (String color : colorList) {
+            map.get("Color").add(color);
+        }
+        for (String size : sizeList) {
+            map.get("Size").add(size);
+        }
+        return map;
     }
 }

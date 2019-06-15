@@ -72,9 +72,9 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         link.add("https://katespade.insnw.net/KateSpade/S2350001_104?$large$");
         link.add("https://katespade.insnw.net/KateSpade/S2261004_650?$large$");
         ArrayList<String> color = new ArrayList<String>();
-        color.add("blue");
-        color.add("white");
-        color.add("black");
+        color.add("Blue");
+        color.add("White");
+        color.add("Black");
 
         for (int i = 0; i < 12; i++) {
             int k = i % 3;

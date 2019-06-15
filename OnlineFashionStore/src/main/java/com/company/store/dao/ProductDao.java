@@ -78,7 +78,7 @@ public class ProductDao {
         session.beginTransaction();
         String hql = "FROM Inventory WHERE productId = '" + productId + "'";
         Query query = session.createQuery(hql);
-        ArrayList<Inventory> inventories =(ArrayList<Inventory>) query.list();
+        ArrayList<Inventory> inventories = (ArrayList<Inventory>) query.list();
         session.getTransaction().commit();
         session.close();
         return inventories;
@@ -87,11 +87,22 @@ public class ProductDao {
     public ArrayList<Inventory> filterProducts(String condition) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String hql = "FROM Inventory WHERE " + condition + ";";
+        String hql = "FROM Inventory WHERE " + condition;
         Query query = session.createQuery(hql);
-        ArrayList<Inventory> inventories =(ArrayList<Inventory>) query.list();
+        ArrayList<Inventory> inventories = (ArrayList<Inventory>) query.list();
         session.getTransaction().commit();
         session.close();
         return inventories;
+    }
+
+    public ArrayList<String> getAllDistinctValues(String table, String columnName) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "SELECT DISTINCT " + columnName + " FROM " + table;
+        Query query = session.createQuery(hql);
+        ArrayList<String> values = (ArrayList<String>) query.list();
+        session.getTransaction().commit();
+        session.close();
+        return values;
     }
 }

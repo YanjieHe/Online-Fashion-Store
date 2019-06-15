@@ -46,4 +46,9 @@ public class ProductController {
         ArrayList<ProductInfo> productInfoArrayList = productService.filterProducts(params);
         return new ResponseEntity<>(productInfoArrayList, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/distinct_values", method = RequestMethod.GET)
+    public ResponseEntity<Object> getDistinctValues() {
+        return new ResponseEntity<>(productService.getDistinctValues(), HttpStatus.OK);
+    }
 }

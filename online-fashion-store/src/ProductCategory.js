@@ -2,6 +2,7 @@ import React from 'react';
 import NavigationBar from "./NavigationBar";
 import ProductDisplay from "./ProductDisplay";
 import {Container, Row, Col, InputGroup, DropdownButton, Dropdown, FormControl} from 'react-bootstrap';
+import base from "./Url";
 
 class ProductCategory extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class ProductCategory extends React.Component {
         this.state = {
             products: [],
             sortCriteria: "SORT",
+            distinctValues: {"Color": [], "Size": []},
             options: {}
         };
         this.handleSortCriteriaClick = this.handleSortCriteriaClick.bind(this);
@@ -16,11 +18,25 @@ class ProductCategory extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/trending_products/12")
+        fetch(base + "/distinct_values")
             .then(response => response.json())
-            .then(json => {
-                this.setState({products: json})
-            });
+            .then(json => this.setState({distinctValues: json},
+                () =>
+                    fetch(base + "/filter_products", {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(this.state.options)
+                    })
+                        .then(response => response.json())
+                        .then(json => {
+                            console.log("retrieved information");
+                            console.log(json);
+                            this.setState({products: json})
+                        })
+            ));
     }
 
     handleSortCriteriaClick(criteria) {
@@ -32,22 +48,40 @@ class ProductCategory extends React.Component {
         if (checked) {
             if (category in this.state.options) {
                 if (value in this.state.options[category]) {
-                    return this.state.options[category];
+                    let options = Object.assign({}, this.state.options);
+                    options[category][value] = true;
+                    this.setState({options: options}, () => this.componentDidMount());
                 } else {
-                    return false;
+                    let options = Object.assign({}, this.state.options);
+                    options[category][value] = true;
+                    this.setState({options: options}, () => this.componentDidMount());
                 }
             } else {
-                return false;
+                let options = Object.assign({}, this.state.options);
+                options[category] = {};
+                options[category][value] = true;
+                this.setState({options: options}, () => this.componentDidMount());
             }
         } else {
-            return false;
+            if (category in this.state.options) {
+                if (value in this.state.options[category]) {
+                    let options = Object.assign({}, this.state.options);
+                    options[category][value] = false;
+                    this.setState({options: options}, () =>
+                        this.componentDidMount());
+                } else {
+
+                }
+            } else {
+
+            }
         }
     }
 
     check(category, value) {
         if (category in this.state.options) {
             if (value in this.state.options[category]) {
-                return this.state.options[category];
+                return this.state.options[category][value];
             } else {
                 return false;
             }
@@ -59,8 +93,8 @@ class ProductCategory extends React.Component {
     option(category, value) {
         return <InputGroup className="mb-3">
             <InputGroup.Prepend>
-                <InputGroup.Checkbox aria-label="Checkbox for following text input" checked={() =>
-                    this.check(category, value)}
+                <InputGroup.Checkbox aria-label="Checkbox for following text input"
+                                     checked={this.check(category, value)}
                                      onChange={event => this.handleChange(category, value, event)}/>
             </InputGroup.Prepend>
             <InputGroup.Prepend>
@@ -124,27 +158,15 @@ class ProductCategory extends React.Component {
                             <hr/>
                             <div>
                                 <h4>Color</h4>
-                                {this.option("Color", "Black")}
-                                {this.option("Color", "White")}
+                                {this.state.distinctValues["Color"].map(
+                                    color =>
+                                        this.option("Color", color))}
                             </div>
                             <div>
                                 <h4>Size</h4>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Large</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Small</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
+                                {this.state.distinctValues["Size"].map(
+                                    size =>
+                                        this.option("Size", size))}
                             </div>
                             <div>
                                 <h4>Material</h4>
