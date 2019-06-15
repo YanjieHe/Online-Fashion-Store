@@ -59,7 +59,7 @@ class NavigationBar extends React.Component {
                         <NavDropdown.Item onClick={() => this.props.history.push('/login')}>LOGIN</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.4">REGISTER</NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link href="#sale">CONTACT</Nav.Link>
+                    <Nav.Link onClick={() => this.props.history.push('/contact')}>CONTACT</Nav.Link>
                 </Nav>
                 {loginStatus}
                 {/*<Form inline>*/}

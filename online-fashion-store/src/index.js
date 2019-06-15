@@ -12,6 +12,7 @@ import ProductDetails from "./ProductDetails";
 import ShoppingCart from "./ShoppingCart";
 import Checkout from "./Checkout";
 import ProductCategory from "./ProductCategory";
+import Contact from "./Contact";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -22,6 +23,7 @@ ReactDOM.render(
             <Route exact path="/shopping_cart" component={ShoppingCart}/>
             <Route exact path="/checkout" component={Checkout}/>
             <Route exact path="/category" component={ProductCategory}/>
+            <Route exact path="/contact" component={Contact}/>
         </Switch>
     </BrowserRouter>, document.getElementById('root'));
 
