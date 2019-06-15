@@ -156,45 +156,15 @@ class ProductCategory extends React.Component {
                             <br/>
                             <h2>Product Filters</h2>
                             <hr/>
-                            <div>
-                                <h4>Color</h4>
-                                {this.state.distinctValues["Color"].map(
-                                    color =>
-                                        this.option("Color", color))}
-                            </div>
-                            <div>
-                                <h4>Size</h4>
-                                {this.state.distinctValues["Size"].map(
-                                    size =>
-                                        this.option("Size", size))}
-                            </div>
-                            <div>
-                                <h4>Material</h4>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Cotton</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Linen</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Nylon</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
-                            </div>
+                            {Object.keys(this.state.distinctValues).concat().sort().map(
+                                key =>
+                                    <div>
+                                        <h4>{key}</h4>
+                                        {this.state.distinctValues[key].map(
+                                            color =>
+                                                this.option(key, color))}
+                                    </div>
+                            )}
                         </Col>
                         <Col xs={9}>
                             <ProductDisplay products={products}/>
