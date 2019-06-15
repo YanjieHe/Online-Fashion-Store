@@ -76,13 +76,25 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         color.add("Blue");
         color.add("White");
         color.add("Black");
+        color.add("Green");
+        color.add("Bright Peony Mult");
+        color.add("White");
+        color.add("Nearly Nude");
+        color.add("Caramel");
+        color.add("Caramel");
+        color.add("White");
+        color.add("Tusk");
+        color.add("Smoke Pale Pink");
 
+        int[] categoryIdList = {
+                1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3
+        };
         Random random = new Random();
         for (int i = 0; i < 12; i++) {
             int k = i % 3;
             Product product = new Product();
             product.setProductId(i + 1);
-            product.setCategoryId(1);
+            product.setCategoryId(categoryIdList[i]);
             product.setName(name.get(i));
             product.setPostDate(new GregorianCalendar(2019, Calendar.APRIL, 29).getTime());
             product.setScore(4.0);
@@ -96,16 +108,19 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
             inventory.setInventoryId(i + 1);
             inventory.setProductId(i + 1);
             inventory.setQuantity(10);
-            inventory.setSize("20");
+            inventory.setSize(Integer.toString((Math.abs(random.nextInt()) % 5 + 3) * 2));
             inventoryService.createInventory(inventory);
         }
     }
 
     void InsertProductCategories() {
-        for (int i = 1; i <= 10; i++) {
+        String[] categories = {
+                "Bag", "Clothing", "Shoe",
+        };
+        for (int i = 1; i <= 3; i++) {
             ProductCategory productCategory = new ProductCategory();
             productCategory.setCategoryId(i);
-            productCategory.setCategoryName("Bag " + i);
+            productCategory.setCategoryName(categories[i - 1]);
             productCategory.setParentCategoryId(null);
             productCategoryService.createProductCategory(productCategory);
         }

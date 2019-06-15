@@ -1,9 +1,11 @@
 package com.company.store.services;
 
 import com.company.store.dao.InventoryDao;
+import com.company.store.dao.ProductCategoryDao;
 import com.company.store.dao.ProductDao;
 import com.company.store.models.Inventory;
 import com.company.store.models.Product;
+import com.company.store.models.ProductCategory;
 import com.company.store.models.ProductInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ import java.util.HashMap;
 public class ProductService {
     @Autowired
     private ProductDao productDao;
+
+    @Autowired
+    private ProductCategoryDao productCategoryDao;
 
     public Product fetchProductById(int productId) {
         return productDao.read(productId);
@@ -80,24 +85,39 @@ public class ProductService {
     }
 
     public ArrayList<String> getAllColor() {
-        return productDao.getAllDistinctValues("Inventory", "color");
+        return (ArrayList<String>) productDao.getAllDistinctValues("Inventory", "color");
     }
 
     public ArrayList<String> getAllSize() {
-        return productDao.getAllDistinctValues("Inventory", "size");
+        return (ArrayList<String>) productDao.getAllDistinctValues("Inventory", "size");
+    }
+
+    public ArrayList<String> getAllCategories() {
+        ArrayList<Integer> categoryIdList = (ArrayList<Integer>) productDao.getAllDistinctValues("Product", "categoryId");
+        ArrayList<String> categoryList = new ArrayList<>();
+        for (int id : categoryIdList) {
+            ProductCategory category = productCategoryDao.read(id);
+            categoryList.add(category.getCategoryName());
+        }
+        return categoryList;
     }
 
     public HashMap<String, ArrayList<String>> getDistinctValues() {
         ArrayList<String> colorList = getAllColor();
         ArrayList<String> sizeList = getAllSize();
+        ArrayList<String> categoryList = getAllCategories();
         HashMap<String, ArrayList<String>> map = new HashMap<>();
         map.put("Color", new ArrayList<String>());
         map.put("Size", new ArrayList<String>());
+        map.put("Category", new ArrayList<>());
         for (String color : colorList) {
             map.get("Color").add(color);
         }
         for (String size : sizeList) {
             map.get("Size").add(size);
+        }
+        for (String category : categoryList) {
+            map.get("Category").add(category);
         }
         return map;
     }

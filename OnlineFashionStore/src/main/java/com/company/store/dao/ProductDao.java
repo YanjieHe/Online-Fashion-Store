@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class ProductDao {
@@ -95,12 +96,12 @@ public class ProductDao {
         return inventories;
     }
 
-    public ArrayList<String> getAllDistinctValues(String table, String columnName) {
+    public List getAllDistinctValues(String table, String columnName) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         String hql = "SELECT DISTINCT " + columnName + " FROM " + table;
         Query query = session.createQuery(hql);
-        ArrayList<String> values = (ArrayList<String>) query.list();
+        List values =  query.list();
         session.getTransaction().commit();
         session.close();
         return values;
