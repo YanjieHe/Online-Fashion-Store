@@ -24,6 +24,8 @@ class TrendingProducts extends React.Component {
         return (
             <div>
                 <NavigationBar/>
+                <h1>Trending Products</h1>
+                <hr/>
                 <ProductDisplay products={products}/>
             </div>
         );

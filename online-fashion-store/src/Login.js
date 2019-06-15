@@ -3,7 +3,7 @@ import {Button, Container, Form} from "react-bootstrap";
 import NavigationBar from './NavigationBar';
 import {instanceOf} from 'prop-types';
 import {withCookies, Cookies} from 'react-cookie';
-import {withRouter} from 'react-router-dom';
+import {NavLink, withRouter} from 'react-router-dom';
 
 class Login extends React.Component {
     static propTypes = {
@@ -74,6 +74,7 @@ class Login extends React.Component {
             <Button variant="primary" type="submit">
                 Login
             </Button>
+            &nbsp;&nbsp;<NavLink to="/register">New to our website? Click here to register an account in one minute!</NavLink>
         </Form>
     }
 
