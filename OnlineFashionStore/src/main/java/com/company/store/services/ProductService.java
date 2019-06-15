@@ -73,15 +73,17 @@ public class ProductService {
         boolean first = true;
         first = addFilter(query, first, "Size", parameters);
         first = addFilter(query, first, "Color", parameters);
+        first = addFilter(query, first, "Category", parameters);
         if (first) {
             return fetchTrendingProducts(12);
+        } else {
+            ArrayList<Inventory> inventories = productDao.filterProducts(query.toString());
+            for (Inventory inventory : inventories) {
+                ProductInfo productInfo = fetchProductInfo(inventory.getProductId());
+                result.add(productInfo);
+            }
+            return result;
         }
-        ArrayList<Inventory> inventories = productDao.filterProducts(query.toString());
-        for (Inventory inventory : inventories) {
-            ProductInfo productInfo = fetchProductInfo(inventory.getProductId());
-            result.add(productInfo);
-        }
-        return result;
     }
 
     public ArrayList<String> getAllColor() {
@@ -93,13 +95,14 @@ public class ProductService {
     }
 
     public ArrayList<String> getAllCategories() {
-        ArrayList<Integer> categoryIdList = (ArrayList<Integer>) productDao.getAllDistinctValues("Product", "categoryId");
-        ArrayList<String> categoryList = new ArrayList<>();
-        for (int id : categoryIdList) {
-            ProductCategory category = productCategoryDao.read(id);
-            categoryList.add(category.getCategoryName());
-        }
-        return categoryList;
+//        ArrayList<Integer> categoryIdList = (ArrayList<Integer>) productDao.getAllDistinctValues("Product", "categoryId");
+//        ArrayList<String> categoryList = new ArrayList<>();
+//        for (int id : categoryIdList) {
+//            ProductCategory category = productCategoryDao.read(id);
+//            categoryList.add(category.getCategoryName());
+//        }
+//        return categoryList;
+        return (ArrayList<String>) productDao.getAllDistinctValues("Product", "category");
     }
 
     public HashMap<String, ArrayList<String>> getDistinctValues() {

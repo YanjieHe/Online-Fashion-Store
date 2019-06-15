@@ -139,29 +139,6 @@ class ProductCategory extends React.Component {
                 <Container fluid>
                     <Row>
                         <Col>
-                            <h2>Browse Category</h2>
-                            <hr/>
-                            <div>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Dresses</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Checkbox aria-label="Checkbox for following text input"/>
-                                    </InputGroup.Prepend>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Skirts</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                </InputGroup>
-                            </div>
-                            <br/>
-                            <h2>Product Filters</h2>
-                            <hr/>
                             {Object.keys(this.state.distinctValues).concat().sort().map(
                                 key =>
                                     <div>

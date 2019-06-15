@@ -3,13 +3,18 @@ package com.company.store.dao;
 import com.company.store.models.Inventory;
 import com.company.store.models.Product;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.transform.AliasToEntityMapResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ProductDao {
@@ -88,9 +93,25 @@ public class ProductDao {
     public ArrayList<Inventory> filterProducts(String condition) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String hql = "FROM Inventory WHERE " + condition;
-        Query query = session.createQuery(hql);
-        ArrayList<Inventory> inventories = (ArrayList<Inventory>) query.list();
+        String sql = "SELECT Inventory_ID, Product_ID, Color,"
+                + "Size, Price, Image_Link, Quantity FROM "
+                + "(SELECT Inventory_ID, Inventory.Product_ID, Color, Size, Price, Image_Link, Quantity, Category FROM "
+                + "Inventory LEFT JOIN Product "
+                + "ON Inventory.Product_ID = Product.Product_ID) as T WHERE " + condition;
+        SQLQuery query = session.createSQLQuery(sql);
+        ArrayList<Inventory> inventories = new ArrayList<>();
+        for (Object obj : query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list()) {
+            Map map = (Map) obj;
+            Inventory inventory = new Inventory();
+            inventory.setSize(map.get("Size").toString());
+            inventory.setInventoryId((Integer) map.get("Inventory_ID"));
+            inventory.setProductId((Integer) map.get("Product_ID"));
+            inventory.setColor(map.get("Color").toString());
+            inventory.setPrice((Double) map.get("Price"));
+            inventory.setImageLink(map.get("Image_Link").toString());
+            inventory.setQuantity((Integer) map.get("Quantity"));
+            inventories.add(inventory);
+        }
         session.getTransaction().commit();
         session.close();
         return inventories;
@@ -101,7 +122,7 @@ public class ProductDao {
         session.beginTransaction();
         String hql = "SELECT DISTINCT " + columnName + " FROM " + table;
         Query query = session.createQuery(hql);
-        List values =  query.list();
+        List values = query.list();
         session.getTransaction().commit();
         session.close();
         return values;

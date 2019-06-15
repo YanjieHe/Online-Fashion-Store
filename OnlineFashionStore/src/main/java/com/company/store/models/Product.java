@@ -11,6 +11,9 @@ public class Product {
     @Column(name = "Product_ID")
     private Integer productId;
 
+    @Column(name = "Category")
+    private String category;
+
     @Column(name = "Category_ID")
     private Integer categoryId;
 
@@ -76,5 +79,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

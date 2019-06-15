@@ -89,12 +89,17 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         int[] categoryIdList = {
                 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3
         };
+
+        String[] categoryList = {
+                "Bag", "Bag", "Bag", "Clothing", "Clothing", "Clothing", "Clothing", "Clothing", "Clothing", "Shoe", "Shoe", "Shoe"
+        };
         Random random = new Random();
         for (int i = 0; i < 12; i++) {
             int k = i % 3;
             Product product = new Product();
             product.setProductId(i + 1);
             product.setCategoryId(categoryIdList[i]);
+            product.setCategory(categoryList[i]);
             product.setName(name.get(i));
             product.setPostDate(new GregorianCalendar(2019, Calendar.APRIL, 29).getTime());
             product.setScore(4.0);
