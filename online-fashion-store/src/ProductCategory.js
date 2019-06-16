@@ -10,6 +10,7 @@ class ProductCategory extends React.Component {
         this.state = {
             products: [],
             sortCriteria: "SORT",
+            filterCriteria: "",
             distinctValues: {"Color": [], "Size": []},
             options: {}
         };
@@ -40,6 +41,7 @@ class ProductCategory extends React.Component {
                             } else if (this.state.sortCriteria === "price low to high") {
                                 json.sort((a, b) => a.inventories[0].price > b.inventories[0].price);
                             }
+                            json = json.filter(product => this.filterName(product.productName));
                             this.setState({products: json})
                         })
             ));
@@ -47,6 +49,14 @@ class ProductCategory extends React.Component {
 
     handleSortCriteriaClick(criteria) {
         this.setState({sortCriteria: criteria}, () => this.componentDidMount());
+    }
+
+    filterName(name) {
+        if (this.state.filterCriteria === "") {
+            return true;
+        } else {
+            return name.toLowerCase().indexOf(this.state.filterCriteria.toLowerCase()) >= 0;
+        }
     }
 
     handleChange(category, value, event) {
@@ -134,7 +144,8 @@ class ProductCategory extends React.Component {
                             this.handleSortCriteriaClick("top rated")}>top
                             rated</Dropdown.Item>
                     </DropdownButton>
-                    <FormControl aria-describedby="basic-addon1"/>
+                    <FormControl aria-describedby="basic-addon1" value={this.state.filterCriteria}
+                                 onChange={event => this.setState({filterCriteria: event.target.value}, this.componentDidMount)}/>
                 </InputGroup>
                 <Container fluid>
                     <Row>
