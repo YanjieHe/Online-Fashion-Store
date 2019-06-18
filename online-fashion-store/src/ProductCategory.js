@@ -145,7 +145,8 @@ class ProductCategory extends React.Component {
                             rated</Dropdown.Item>
                     </DropdownButton>
                     <FormControl aria-describedby="basic-addon1" value={this.state.filterCriteria}
-                                 onChange={event => this.setState({filterCriteria: event.target.value}, this.componentDidMount)}/>
+                                 onChange={event => this.setState({filterCriteria: event.target.value},
+                                     this.componentDidMount)}/>
                 </InputGroup>
                 <Container fluid>
                     <Row>
