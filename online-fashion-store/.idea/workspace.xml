@@ -16,7 +16,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ProductCategory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="71">
               <caret line="148" column="37" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -75,7 +75,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="656" />
     <option name="height" value="456" />
   </component>
@@ -165,15 +165,15 @@
       <workItem from="1558984322065" duration="9029000" />
       <workItem from="1560041980740" duration="23604000" />
       <workItem from="1560459918562" duration="162000" />
-      <workItem from="1560460148603" duration="25203000" />
+      <workItem from="1560460148603" duration="25803000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79958000" />
+    <option name="totallyTimeSpent" value="80558000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
@@ -398,7 +398,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ProductCategory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="71">
           <caret line="148" column="37" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
