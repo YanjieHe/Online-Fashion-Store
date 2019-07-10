@@ -40,9 +40,20 @@ Order [label=<
   <tr><td port="price">Price</td></tr>
 </table>>];
 
+Product [label=<
+<table border="0" cellborder="1" cellspacing="0">
+  <tr><td><b>Product</b></td></tr>
+  <tr><td port="product_id">Product_ID</td></tr>
+  <tr><td port="category_id">Category_ID</td></tr>
+  <tr><td port="name">Name</td></tr>
+  <tr><td port="post_date">Post_Date</td></tr>
+  <tr><td port="score">Score</td></tr>
+  <tr><td port="description">Description</td></tr>
+</table>>];
+
 ProductCategory [label=<
 <table border="0" cellborder="1" cellspacing="0">
-  <tr><td><b>Order</b></td></tr>
+  <tr><td><b>ProductCategory</b></td></tr>
   <tr><td port="category_id">Category_ID</td></tr>
   <tr><td port="category_name">Category_Name</td></tr>
   <tr><td port="parent_category_id">Parent_Category_ID</td></tr>
@@ -59,5 +70,9 @@ ShoppingCart [label=<
 
 
 Customer:customer_id -> Order:customer_id
-
+Inventory:inventory_id -> Order:inventory_id
+Product:product_id -> Inventory:product_id
+ProductCategory:category_id -> Product:category_id
+Customer:customer_id -> ShoppingCart:customer_id
+Inventory:inventory_id -> ShoppingCart:inventory_id
 }
