@@ -59,6 +59,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         name.add("aaron sneakers");
         name.add("fallyn flats");
         name.add("jonah loafers");
+
         ArrayList<String> link = new ArrayList<String>();
         link.add("https://katespade.insnw.net/KateSpade/PXRUA160_399?$large$");
         link.add("https://katespade.insnw.net/KateSpade/PXRUA350_104?$large$");
@@ -72,6 +73,7 @@ public class OnlineFashionStoreApplication implements CommandLineRunner {
         link.add("https://katespade.insnw.net/KateSpade/S2120020_003?$large$");
         link.add("https://katespade.insnw.net/KateSpade/S2350001_104?$large$");
         link.add("https://katespade.insnw.net/KateSpade/S2261004_650?$large$");
+        
         ArrayList<String> color = new ArrayList<String>();
         color.add("Blue");
         color.add("White");
