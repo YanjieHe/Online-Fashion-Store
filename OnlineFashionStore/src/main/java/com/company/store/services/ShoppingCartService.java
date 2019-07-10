@@ -116,11 +116,13 @@ public class ShoppingCartService {
             item.setCustomerId(shoppingCart.getCustomerId());
             item.setInventoryId(shoppingCart.getInventoryId());
             item.setQuantity(shoppingCart.getQuantity());
+
             Inventory inventory = inventoryService.fetchInventoryById(shoppingCart.getInventoryId());
             item.setColor(inventory.getColor());
             item.setImageLink(inventory.getImageLink());
             item.setPrice(inventory.getPrice());
             item.setSize(inventory.getSize());
+            
             Product product = productService.fetchProductById(inventory.getProductId());
             item.setName(product.getName());
             result.add(item);
