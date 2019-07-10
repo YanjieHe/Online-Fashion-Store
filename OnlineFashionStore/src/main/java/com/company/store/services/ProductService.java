@@ -17,9 +17,6 @@ public class ProductService {
     @Autowired
     private ProductDao productDao;
 
-    @Autowired
-    private ProductCategoryDao productCategoryDao;
-
     public Product fetchProductById(int productId) {
         return productDao.read(productId);
     }
