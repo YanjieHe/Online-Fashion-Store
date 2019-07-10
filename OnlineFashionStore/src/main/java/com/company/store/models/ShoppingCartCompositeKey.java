@@ -6,6 +6,8 @@ import java.io.Serializable;
 @Embeddable
 public class ShoppingCartCompositeKey implements Serializable {
 
+    private static final long serialVersionUID = -7081335288545850506L;
+
     private Integer customerId;
 
     private Integer inventoryId;
