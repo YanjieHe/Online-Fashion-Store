@@ -17,7 +17,8 @@ public class HibernateUtilConfig {
     public SessionFactory getSessionFactory() {
         if (entityManagerFactory.unwrap(SessionFactory.class) == null) {
             throw new NullPointerException("factory is not a hibernate factory");
+        } else {
+            return entityManagerFactory.unwrap(SessionFactory.class);
         }
-        return entityManagerFactory.unwrap(SessionFactory.class);
     }
 }
