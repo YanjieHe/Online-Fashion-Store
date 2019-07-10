@@ -1,7 +1,11 @@
 package com.company.store.dao;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import com.company.store.models.Inventory;
 import com.company.store.models.Product;
+
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -10,17 +14,10 @@ import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 @Repository
 public class ProductDao {
     @Autowired
     private SessionFactory sessionFactory;
-
-    @Autowired
-    private InventoryDao inventoryDao;
 
     public void createProduct(Product product) {
         try {
@@ -65,6 +62,7 @@ public class ProductDao {
         session.close();
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayList<Product> fetchTrendingProducts(int amount) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -77,6 +75,7 @@ public class ProductDao {
         return products;
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayList<Inventory> fetchInventories(int productId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -88,18 +87,18 @@ public class ProductDao {
         return inventories;
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayList<Inventory> filterProducts(String condition) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String sql = "SELECT Inventory_ID, Product_ID, Color,"
-                + "Size, Price, Image_Link, Quantity FROM "
+        String sql = "SELECT Inventory_ID, Product_ID, Color," + "Size, Price, Image_Link, Quantity FROM "
                 + "(SELECT Inventory_ID, Inventory.Product_ID, Color, Size, Price, Image_Link, Quantity, Category FROM "
-                + "Inventory LEFT JOIN Product "
-                + "ON Inventory.Product_ID = Product.Product_ID) as T WHERE " + condition;
+                + "Inventory LEFT JOIN Product " + "ON Inventory.Product_ID = Product.Product_ID) as T WHERE "
+                + condition;
         SQLQuery query = session.createSQLQuery(sql);
         ArrayList<Inventory> inventories = new ArrayList<>();
         for (Object obj : query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list()) {
-            Map map = (Map) obj;
+            Map<String, Object> map = (Map<String, Object>) obj;
             Inventory inventory = new Inventory();
             inventory.setSize(map.get("Size").toString());
             inventory.setInventoryId((Integer) map.get("Inventory_ID"));
@@ -115,12 +114,13 @@ public class ProductDao {
         return inventories;
     }
 
-    public List getAllDistinctValues(String table, String columnName) {
+    @SuppressWarnings("unchecked")
+    public ArrayList<String> getAllDistinctValues(String table, String columnName) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         String hql = "SELECT DISTINCT " + columnName + " FROM " + table;
         Query query = session.createQuery(hql);
-        List values = query.list();
+        ArrayList<String> values = (ArrayList<String>) query.list();
         session.getTransaction().commit();
         session.close();
         return values;

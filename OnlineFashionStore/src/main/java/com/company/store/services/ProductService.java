@@ -3,7 +3,6 @@ package com.company.store.services;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.company.store.dao.ProductCategoryDao;
 import com.company.store.dao.ProductDao;
 import com.company.store.models.Inventory;
 import com.company.store.models.Product;
@@ -83,11 +82,11 @@ public class ProductService {
     }
 
     public ArrayList<String> getAllColor() {
-        return (ArrayList<String>) productDao.getAllDistinctValues("Inventory", "color");
+        return productDao.getAllDistinctValues("Inventory", "color");
     }
 
     public ArrayList<String> getAllSize() {
-        return (ArrayList<String>) productDao.getAllDistinctValues("Inventory", "size");
+        return productDao.getAllDistinctValues("Inventory", "size");
     }
 
     public ArrayList<String> getAllCategories() {
@@ -98,7 +97,7 @@ public class ProductService {
 //            categoryList.add(category.getCategoryName());
 //        }
 //        return categoryList;
-        return (ArrayList<String>) productDao.getAllDistinctValues("Product", "category");
+        return productDao.getAllDistinctValues("Product", "category");
     }
 
     public HashMap<String, ArrayList<String>> getDistinctValues() {

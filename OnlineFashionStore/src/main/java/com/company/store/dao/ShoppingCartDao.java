@@ -61,6 +61,7 @@ public class ShoppingCartDao {
         session.close();
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayList<ShoppingCart> getAllShoppingCartItems(int customerId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
