@@ -1,7 +1,9 @@
 package com.company.store.services;
 
 public class LoginException extends RuntimeException {
-    public LoginException() {
+    private static final long serialVersionUID = 1251678086434789825L;
+
+	public LoginException() {
         super();
     }
 

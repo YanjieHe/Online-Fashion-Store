@@ -1,17 +1,16 @@
 package com.company.store.services;
 
-import com.company.store.dao.InventoryDao;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.company.store.dao.ProductCategoryDao;
 import com.company.store.dao.ProductDao;
 import com.company.store.models.Inventory;
 import com.company.store.models.Product;
-import com.company.store.models.ProductCategory;
 import com.company.store.models.ProductInfo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 @Service
 public class ProductService {
