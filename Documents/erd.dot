@@ -4,42 +4,60 @@ digraph {
     rankdir=LR;
 
 
-Foo [label=<
+Customer [label=<
 <table border="0" cellborder="1" cellspacing="0">
-  <tr><td><i>Input Foo</i></td></tr>
-  <tr><td port="1">one</td></tr>
-  <tr><td port="2">two</td></tr>
-  <tr><td port="3">three</td></tr>
-  <tr><td port="4">four</td></tr>
-  <tr><td port="5">five</td></tr>
-  <tr><td port="6">six</td></tr>
+  <tr><td><b>Customer</b></td></tr>
+  <tr><td port="customer_id">Customer_ID</td></tr>
+  <tr><td port="email">Email</td></tr>
+  <tr><td port="password">Password</td></tr>
+  <tr><td port="first_name">First_Name</td></tr>
+  <tr><td port="last_name">Last_Name</td></tr>
 </table>>];
 
 
-Bar [label=<
+Inventory [label=<
 <table border="0" cellborder="1" cellspacing="0">
-  <tr><td><i>Input Bar</i></td></tr>
-  <tr><td port="7">seven</td></tr>
-  <tr><td port="8">eight</td></tr>
-  <tr><td port="9">nine</td></tr>
-  <tr><td port="10">ten</td></tr>
+  <tr><td><b>Inventory</b></td></tr>
+  <tr><td port="inventory_id">Inventory_ID</td></tr>
+  <tr><td port="product_id">Product_ID</td></tr>
+  <tr><td port="color">Color</td></tr>
+  <tr><td port="size">Size</td></tr>
+  <tr><td port="price">Price</td></tr>
+  <tr><td port="image_link">Image_Link</td></tr>
+  <tr><td port="quantity">Quantity</td></tr>
 </table>>];
 
 
-Baz [label=<
+Order [label=<
 <table border="0" cellborder="1" cellspacing="0">
-  <tr><td><i>Output Baz</i></td></tr>
-  <tr><td port="a">alpha</td></tr>
-  <tr><td port="b">bravo</td></tr>
-  <tr><td port="c">charlie</td></tr>
-  <tr><td port="d">delta</td></tr>
-  <tr><td port="e">echo</td></tr>
-  <tr><td port="f">foxtrot</td></tr>
+  <tr><td><b>Order</b></td></tr>
+  <tr><td port="order_id">Order_ID</td></tr>
+  <tr><td port="customer_id">Customer_ID</td></tr>
+  <tr><td port="inventory_id">Inventory_ID</td></tr>
+  <tr><td port="order_date">Order_Date</td></tr>
+  <tr><td port="order_status">Order_Status</td></tr>
+  <tr><td port="quantity">Quantity</td></tr>
+  <tr><td port="price">Price</td></tr>
 </table>>];
 
-Foo:2 -> Baz:a;
-Foo:3 -> Baz:e;
-Foo:6 -> Baz:b;
-Bar:7 -> Baz:d;
-Bar:9 -> Baz:f;
+ProductCategory [label=<
+<table border="0" cellborder="1" cellspacing="0">
+  <tr><td><b>Order</b></td></tr>
+  <tr><td port="category_id">Category_ID</td></tr>
+  <tr><td port="category_name">Category_Name</td></tr>
+  <tr><td port="parent_category_id">Parent_Category_ID</td></tr>
+</table>>];
+
+ShoppingCart [label=<
+<table border="0" cellborder="1" cellspacing="0">
+  <tr><td><b>ShoppingCart</b></td></tr>
+  <tr><td port="customer_id">Customer_ID</td></tr>
+  <tr><td port="inventory_id">Inventory_ID</td></tr>
+  <tr><td port="quantity">Quantity</td></tr>
+  <tr><td port="adding_date">Adding_Date</td></tr>
+</table>>];
+
+
+Customer:customer_id -> Order:customer_id
+
 }
